@@ -7,7 +7,46 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
   <meta name="author" content="Chindraba (Ronald Lamoreaux)">
   <title>Lesson 6: Assignment: Rebuild a page from Trulia</title>
+  <link rel="stylesheet" href="https://fonts.google.com/?category=Sans+Serif&selection.family=Lato">
   <style>
+    .known-neighborhood .unit-neighborhood::after, .unit-city::after {
+      content: '\2c\20';
+    }
+    .new-list .unit-new {
+      display: inline-block;
+      background-color: rgb(32,192,99,0.35);
+    }
+    .owner-list .unit-owner {
+      display: inline-block;
+      background-color: rgb(134,144,152,0.45);
+    }
+    .ask-usd::before {
+      content: '\24';
+    }
+    .list-lower .ask-usd::after {
+      color: darkgreen;
+      content: '\20\2191';
+      font-size: 1.25em;
+      font-weight: bold;
+    }
+    .list-higher .ask-usd::after {
+      color: red;
+      content: '\20\2193';
+      font-size: 1.25em;
+      font-weight: bold;
+    }
+    .unit-beds::before {
+      content: '\1f6cf\20';
+    }
+    .unit-beds::after {
+      content: '\20\62\64';
+    }
+    .unit-baths::before {
+      content: '\1f6c0\20';
+    }
+    .unit-baths::after {
+      content: '\20\62\61';
+    }
 /*
     ### Colors
     Green: #20c063 / RGBA(32,192,99,1)
@@ -17,8 +56,7 @@
   </style>
 </head>
 <body>
-<!--
-    ## Reference content
+<!-- ## Reference content
 
     ### Font
     Lato 400 Regular
@@ -113,9 +151,6 @@
 
     ### Images: 
 
-    Logo:
-    https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/logo.svg
-
     House pics:
     https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-1.jpg
     https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-2.jpg
@@ -138,18 +173,8 @@
     https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/down-arrow-outline.svg
     https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/up-sign.svg
 
-    ### Footer:
 
-    1 2 3 4 >
-    1 - 30 of 79 Results
-    United States > District Of Columbia > Washington > 20010
 
-    20010 Real Estate Insights
-    ZIP code 20010 is located in Washington, District of Columbia.
-
-    The plethora of grocery stores in ZIP code 20010 makes it easy to stock up on specialty foods, like organic and gluten-free options, without having to leave the area. There is easy access to public transportation [https://www.trulia.com/real_estate/20010-Washington/], which is the preferred way to travel here due to its ease of use and abundant travel options. Bicycles are big sellers in ZIP code 20010; everyone seems to be riding these days, whether it's for the daily commute or a fun afternoon with the family.
-
-    Many houses in ZIP code 20010 are historic with one-of-a-kind architecture, and it's clear to see why it's so important to maintain them and keep history living on. This year, the average listing price grew to $658,471  in this locale, a noticeable appreciation of 12.5 percent from $585,528 the year prior. During the same period, inventory is noticeably increasing in this locale year-over-year, with a 20 percent increase in for-sale listings last year alone. Enjoy a cozy night by the fire, as many residences here come equipped with authentic fireplaces. ZIP code 20010 has some great historic estates so if you move to one of these homes, you'll be inheriting a piece of history. If you enjoy a view and the ability to see far and wide, consider a penthouse in this place [https://www.trulia.com/for_sale/20010_zip/penthouse_keyword/] for an unparalleled experience.
 
     HTML Skeleton to get you going:
     <main class="trulia-grid">
@@ -179,5 +204,137 @@
       
       </main>
 -->
+  <header>
+    <div id="logo">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/logo.svg" alt="Trulia.com Logo">
+    </div>
+    <nav id="left-menu" class="menu">
+      <ul>
+        <li><a href="#">buy</a></li>
+        <li><a href="#">rent</a></li>
+        <li><a href="#">mortgage</a></li>
+        <li><a href="#">local scoop</a></li>
+      </ul>
+    </nav>
+    <nav id="right-menu" class="menu">
+      <ul>
+        <li><a href="#">Saved Homes</a></li>
+        <li><a href="#">Saved Searches</a></li>
+        <li><a href="#">J</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section id="result-report">
+    <div>Homes For Sale &amp; Real Estate in 20010</div>
+    <div>79 homes available on Trulia</div>
+  </section>
+  <section id="showcase">
+    <section class="unit-listing new-list owner-list list-higher known-neighborhood">
+      <section class="unit-image">
+        <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-8.jpg')" title="Photo of unit at 752 Park Rd NW">
+          <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
+        </div>
+      </section>
+      <section class="unit-info">
+        <header class="unit-price">
+          <span class="ask-usd">760,000</span>
+        </header>
+        <section class="unit-data">
+          <ul class="unit-stats">
+            <li class="beds"><span class="unit-beds">3</span></li>
+            <li class="baths"><span class="unit-baths">3</span></li>
+            <li class="footage"><span class="unit-footage">1920</span> sqft</li>
+          </ul>
+        </section>
+        <section class="unit-location">
+          <div class="unit-address">752 Park Rd NW</div>
+          <div class="unit-area">
+            <span class="unit-neighborhood">Columbia Heights</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
+          </div>
+        </section>
+      </section>
+    </section>
+    <section class="unit-listing new-list owner-list list-lower known-neighborhood">
+      <section class="unit-image">
+        <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-6.jpg')" title="Photo of unit at 1363 Oak St NW">
+          <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
+        </div>
+      </section>
+      <section class="unit-info">
+        <header class="unit-price">
+          <span class="ask-usd">1,049,000</span>
+        </header>
+        <section class="unit-data">
+          <ul class="unit-stats">
+            <li class="beds"><span class="unit-beds">6</span></li>
+            <li class="baths"><span class="unit-baths">4</span></li>
+            <li class="footage"><span class="unit-footage">2688</span> sqft</li>
+          </ul>
+        </section>
+        <section class="unit-location">
+          <div class="unit-address">752 Park Rd NW</div>
+          <div class="unit-area">
+            <span class="unit-neighborhood">Columbia Heights</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
+          </div>
+        </section>
+      </section>
+    </section>
+  </section>
+  <section id="pagination">
+    <nav class="page-nav">
+      <ul class="page-list">
+        <li class="page-link"><a href="#">&lt;</a></li>
+        <li class="page-link"><a href="#">1</a></li>
+        <li class="page-link"><a href="#">2</a></li>
+        <li class="page-link"><a href="#">s</a></li>
+        <li class="page-link"><a href="#">&gt;</a></li>
+      </ul>
+    </nav>
+    <div id="pagination-results">
+      <div>1 - 30 of 79 Results</div>
+    </div>
+    <ul id="location-trail">
+      <li id="country-link"><a href="#">United States</a></li>
+      <li id="state-link"><a href="#">District of Columbia</a></li>
+      <li id="city-link"><a href="#">Washingtion</a></li>
+      <li id="zipcode-link">20010</li>
+    </ul>
+  </section>
+  <section id="area-report">
+    <header id="area-report-header">
+      20010 Real Estate Insights
+    </header>
+    <main>
+      <p>
+        Zipcode 20010 is located in Washington, District of Columbia.
+      </p>
+      <p>
+        The plethora of grocery stores in ZIP code 20010 makes it easy to stock up on specialty foods, like organic and gluten-free options, without having to leave the area. There is <a href="https://www.trulia.com/real_estate/20010-Washington/">easy access to public transportation</a>, which is the preferred way to travel here due to its ease of use and abundant travel options. Bicycles are big sellers in ZIP code 20010; everyone seems to be riding these days, whether it's for the daily commute or a fun afternoon with the family.
+      </p>
+      <p>
+        Many houses in ZIP code 20010 are historic with one-of-a-kind architecture, and it's clear to see why it's so important to maintain them and keep history living on. This year, the average listing price grew to $658,471  in this locale, a noticeable appreciation of 12.5 percent from $585,528 the year prior. During the same period, inventory is noticeably increasing in this locale year-over-year, with a 20 percent increase in for-sale listings last year alone. Enjoy a cozy night by the fire, as many residences here come equipped with authentic fireplaces. ZIP code 20010 has some great historic estates so if you move to one of these homes, you'll be inheriting a piece of history. If you enjoy a view and the ability to see far and wide, <a href="https://www.trulia.com/for_sale/20010_zip/penthouse_keyword/">consider a penthouse in this place</a> for an unparalleled experience.
+      </p>
+    </main>
+  </section>
+  <footer>
+    <nav id="footer-nav">
+      <ul>
+        <li><a href="#">About Trulia</a></li>
+        <li><a href="#">About Zillow Group</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Investor Relations</a></li>
+        <li><a href="#">Advertising Terms</a></li>
+        <li><a href="#">Privacy Terms of Use</a></li>
+        <li><a href="#">Listings Quality Policy</a></li>
+        <li><a href="#">Subscription Terms</a></li>
+        <li><a href="#">Ad Choices</a></li>
+        <li><a href="#">Help</a></li>
+      </ul>
+    </nav>
+    <div id="copyright">
+      Copyright © 2018 Trulia, LLC. All rights reserved. Equal Housing Opportunity.
+    </div>
+  </footer>
+</body>
 </body>
 </html>
