@@ -1,7 +1,7 @@
 # l06-hw03
 
--  Status: Pending
--  CodePen: <https://codepen.io/chindraba-ga/pen/>
+-  Status: Assigned
+-  CodePen: <https://codepen.io/chindraba-ga/pen/oNxYZgG>
 -  Live page: <https://www.chindraba.work/fewd/l06-hw03.html>
 
 ## Contents
@@ -13,7 +13,7 @@
 ---
 ## Description
 
-### Lesson : Assignment: Rebuild a page from Trulia
+### Lesson 6: Assignment: Rebuild a page from Trulia
 
 Now you're stepping into the big leagues - you'll be rebuilding part of a real website: trulia.com
 
