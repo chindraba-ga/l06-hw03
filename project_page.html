@@ -14,23 +14,30 @@
       display: grid;
       grid-template-columns: 100%;
     }
-    .named-area .unit-area::after, .unit-city::after {
-      content: '\2c\20';
-    }
-    .new-list .unit-new {
-      display: inline-block;
-      background-color: rgb(32,192,99,0.35);
-    }
-    .owner-list .unit-owner {
-      display: inline-block;
-      background-color: rgb(134,144,152,0.45);
-    }
+
 /*
     ### Colors
     Green: #20c063 / RGBA(32,192,99,1)
     Gray: #e8e9ea  / RGBA (232,233,234,1)
     Dark Text: #3b4144 / RGBA (59,65,68,1)
 */
+
+/* Create the toggles for display of optional elements */
+    /* Add a comma after the city name, and neighborhood name if present */
+    .named-area .unit-area::after, .unit-city::after {
+      content: '\2c\20';
+    }
+    /* Add a flag to the photo for new listings */
+    .new-list .unit-new {
+      display: inline-block;
+      background-color: rgb(32,192,99,0.35);
+    }
+    /* Add a flag to the photo for listings by the owner */
+    .owner-list .unit-owner {
+      display: inline-block;
+      background-color: rgb(134,144,152,0.45);
+    }
+
 /* Create the symbols and labels for various unit information fields */
     .ask-usd::before {
       content: '\24';
@@ -248,17 +255,17 @@
     </div>
     <nav id="left-menu" class="menu">
       <ul role="menubar">
-        <li role="menuitem"><a href="#">buy</a></li>
-        <li role="menuitem"><a href="#">rent</a></li>
-        <li role="menuitem"><a href="#">mortgage</a></li>
-        <li role="menuitem"><a href="#">local scoop</a></li>
+        <li><a href="#" role="menuitem">buy</a></li>
+        <li><a href="#" role="menuitem">rent</a></li>
+        <li><a href="#" role="menuitem">mortgage</a></li>
+        <li><a href="#" role="menuitem">local scoop</a></li>
       </ul>
     </nav>
     <nav id="right-menu" class="menu">
       <ul role="menubar">
-        <li role="menuitem"><a href="#">Saved Homes</a></li>
-        <li role="menuitem"><a href="#">Saved Searches</a></li>
-        <li role="menuitem"><a href="#" aria-label="Sign up or join Trulia">J</a></li>
+        <li><a href="#" role="menuitem">Saved Homes</a></li>
+        <li><a href="#" role="menuitem">Saved Searches</a></li>
+        <li><a href="#" role="menuitem" aria-label="Sign up or join Trulia">J</a></li>
       </ul>
     </nav>
   </header>
@@ -267,61 +274,63 @@
 
   </style>
   <main id="search-results">
+
   <style>  /* Styles for the search results - header */
 
   </style>
-    <header id="search-report" aria-title="Search results summary">
+    <header id="search-report">
       <div>Homes For Sale &amp; Real Estate in <span id="search-header-zip">20010</span></div>
       <div><span id="search-result-tally">79</span> homes available on Trulia</div>
     </header>
+
   <style>  /* Styles for the search results - showcase */
 
   </style>
-    <main id="showcase" aria-label="properties matching the search">
+    <main id="showcase" role="region" aria-labelledby="pagination-results">
       <section class="unit-listing new-list owner-list list-higher named-area">
         <section class="unit-image" aria-hidden="true">
           <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-8.jpg')" title="Photo of unit at 752 Park Rd NW">
             <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
           </div>
         </section>
-        <section class="unit-info">
+        <section class="unit-info" rol="region" aria-label="information about unit at 752 Park Rd NW">
           <header class="unit-price">
-            <span class="ask-usd">760,000</span>
+            <span class="ask-usd" aria-label="list price">760,000</span>
           </header>
           <section class="unit-data">
             <ul class="unit-stats">
-              <li class="beds"><span class="unit-beds">3</span></li>
-              <li class="baths"><span class="unit-baths">3</span></li>
-              <li class="footage"><span class="unit-footage">1920</span></li>
+              <li class="beds" aria-label="bedrooms"><span class="unit-beds">3</span></li>
+              <li class="baths" aria-label="bathrooms"><span class="unit-baths">3</span></li>
+              <li class="footage" aria-label="square footage"><span class="unit-footage">1920</span></li>
             </ul>
           </section>
           <section class="unit-location">
-            <div class="unit-address">752 Park Rd NW</div>
+            <div class="unit-address" aria-label="address">752 Park Rd NW</div>
             <div class="unit-area">
               <span class="unit-area">Columbia Heights</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
             </div>
           </section>
         </section>
       </section>
-      <section class="unit-listing new-list owner-list list-lower named-area">
+      <section class="unit-listing new-list owner-list list-higher named-area">
         <section class="unit-image" aria-hidden="true">
-          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-6.jpg')" title="Photo of unit at 1363 Oak St NW">
+          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-8.jpg')" title="Photo of unit at 1363 Oak St NW">
             <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
           </div>
         </section>
-        <section class="unit-info">
+        <section class="unit-info" rol="region" aria-label="information about unit at 752 Park Rd NW">
           <header class="unit-price">
-            <span class="ask-usd">1,049,000</span>
+            <span class="ask-usd" aria-label="list price">1,049,000</span>
           </header>
           <section class="unit-data">
             <ul class="unit-stats">
-              <li class="beds"><span class="unit-beds">6</span></li>
-              <li class="baths"><span class="unit-baths">4</span></li>
-              <li class="footage"><span class="unit-footage">2688</span></li>
+              <li class="beds" aria-label="bedrooms"><span class="unit-beds">6</span></li>
+              <li class="baths" aria-label="bathrooms"><span class="unit-baths">4</span></li>
+              <li class="footage" aria-label="square footage"><span class="unit-footage">2688</span></li>
             </ul>
           </section>
           <section class="unit-location">
-            <div class="unit-address">752 Park Rd NW</div>
+            <div class="unit-address" aria-label="address">1363 Oak St NW</div>
             <div class="unit-area">
               <span class="unit-area">Columbia Heights</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
             </div>
@@ -329,19 +338,20 @@
         </section>
       </section>
     </main>
+
   <style>  /* Styles for the search results - footer */
 
   </style>
     <footer id="search-pagination" role="naviagtion">
       <nav class="page-nav">
         <ul class="page-list" role="menubar" aria-label="Search resutls pages">
-          <li class="page-link" role="menuitem" id="first-page-link"><a href="#" aria-label="first page">&#x2bec;</a></li>
-          <li class="page-link" role="menuitem" id="prev-page-link"><a href="#" aria-label="previous page">&#x2b9c;</a></li>
-          <li class="page-link" role="menuitem"><a href="#">1</a></li>
-          <li class="page-link" role="menuitem"><a href="#">2</a></li>
-          <li class="page-link" role="menuitem"><a href="#">3</a></li>
-          <li class="page-link" role="menuitem" id="next-page-link"><a href="#" aria-label="next page">&#x2b9e;</a></li>
-          <li class="page-link" role="menuitem" id="last-page-link"><a href="#" aria-label="last page">&#x2bee;</a></li>
+          <li class="page-link" id="first-page-link"><a href="#" role="menuitem" aria-label="first page">&#x2bec;</a></li>
+          <li class="page-link" id="prev-page-link"><a href="#" role="menuitem" aria-label="previous page">&#x2b9c;</a></li>
+          <li class="page-link"><a href="#" role="menuitem">1</a></li>
+          <li class="page-link"><a href="#" role="menuitem">2</a></li>
+          <li class="page-link"><a href="#" role="menuitem">3</a></li>
+          <li class="page-link" id="next-page-link"><a href="#" role="menuitem" aria-label="next page">&#x2b9e;</a></li>
+          <li class="page-link" id="last-page-link"><a href="#" role="menuitem" aria-label="last page">&#x2bee;</a></li>
         </ul>
       </nav>
       <div id="pagination-results">
@@ -382,22 +392,21 @@
   <footer class="page-footer" role="navigation">
     <nav id="footer-nav">
       <ul role="menubar">
-        <li role="menuitem"><a href="#">About Trulia</a></li>
-        <li role="menuitem"><a href="#">About Zillow Group</a></li>
-        <li role="menuitem"><a href="#">Careers</a></li>
-        <li role="menuitem"><a href="#">Investor Relations</a></li>
-        <li role="menuitem"><a href="#">Advertising Terms</a></li>
-        <li role="menuitem"><a href="#">Privacy Terms of Use</a></li>
-        <li role="menuitem"><a href="#">Listings Quality Policy</a></li>
-        <li role="menuitem"><a href="#">Subscription Terms</a></li>
-        <li role="menuitem"><a href="#">Ad Choices</a></li>
-        <li role="menuitem"><a href="#">Help</a></li>
+        <li><a href="#" role="menuitem">About Trulia</a></li>
+        <li><a href="#" role="menuitem">About Zillow Group</a></li>
+        <li><a href="#" role="menuitem">Careers</a></li>
+        <li><a href="#" role="menuitem">Investor Relations</a></li>
+        <li><a href="#" role="menuitem">Advertising Terms</a></li>
+        <li><a href="#" role="menuitem">Privacy Terms of Use</a></li>
+        <li><a href="#" role="menuitem">Listings Quality Policy</a></li>
+        <li><a href="#" role="menuitem">Subscription Terms</a></li>
+        <li><a href="#" role="menuitem">Ad Choices</a></li>
+        <li><a href="#" role="menuitem">Help</a></li>
       </ul>
     </nav>
     <div id="copyright">
       Copyright © 2018 Trulia, LLC. All rights reserved. Equal Housing Opportunity.
     </div>
   </footer>
-</body>
 </body>
 </html>
