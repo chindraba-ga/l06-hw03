@@ -9,7 +9,12 @@
   <title>Lesson 6: Assignment: Rebuild a page from Trulia</title>
   <link rel="stylesheet" href="https://fonts.google.com/?category=Sans+Serif&selection.family=Lato">
   <style>
-    .known-neighborhood .unit-neighborhood::after, .unit-city::after {
+  /* Layout the entire page as a grid, with 1 column per row */
+    body {
+      display: grid;
+      grid-template-columns: 100%;
+    }
+    .named-area .unit-area::after, .unit-city::after {
       content: '\2c\20';
     }
     .new-list .unit-new {
@@ -20,39 +25,60 @@
       display: inline-block;
       background-color: rgb(134,144,152,0.45);
     }
-    .ask-usd::before {
-      content: '\24';
-    }
-    .list-lower .ask-usd::after {
-      color: darkgreen;
-      content: '\20\2191';
-      font-size: 1.25em;
-      font-weight: bold;
-    }
-    .list-higher .ask-usd::after {
-      color: red;
-      content: '\20\2193';
-      font-size: 1.25em;
-      font-weight: bold;
-    }
-    .unit-beds::before {
-      content: '\1f6cf\20';
-    }
-    .unit-beds::after {
-      content: '\20\62\64';
-    }
-    .unit-baths::before {
-      content: '\1f6c0\20';
-    }
-    .unit-baths::after {
-      content: '\20\62\61';
-    }
 /*
     ### Colors
     Green: #20c063 / RGBA(32,192,99,1)
     Gray: #e8e9ea  / RGBA (232,233,234,1)
     Dark Text: #3b4144 / RGBA (59,65,68,1)
 */
+/* Create the symbols and labels for various unit information fields */
+    .ask-usd::before {
+      content: '\24';
+    }
+    .list-lower .ask-usd::after {
+      color: darkgreen;
+      content: '\a0\2191';
+      font-size: 1.25em;
+      font-weight: bold;
+    }
+    .list-higher .ask-usd::after {
+      color: red;
+      content: '\a0\2193';
+      font-size: 1.25em;
+      font-weight: bold;
+    }
+    .unit-beds::before {
+      content: '\1f6cf\a0';
+    }
+    .unit-beds::after {
+      content: '\a0\62\64';
+    }
+    .unit-baths::before {
+      content: '\1f6c0\a0';
+    }
+    .unit-baths::after {
+      content: '\a0\62\61';
+    }
+    .unit-footage::before {
+      content: '\25e3\a0';
+    }
+    .unit-footage::after {
+      content: '\a0\73\71\72\74';
+    }
+    .unit-address::before {
+      content: "\1f4cd\20";
+      font-weight: bold;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      display: inline-block;
+    }
+    .unit-stats li {
+      padding-right: .75em;
+    }
   </style>
 </head>
 <body>
@@ -204,107 +230,140 @@
       
       </main>
 -->
-  <header>
-    <div id="logo">
+
+  <style>  /* The globally applied styles and overrides */
+    /* Override the behavior of some base elements */
+    h1, h2, h3, h4, h5, h6, ul, li {
+      padding: 0;
+    }
+
+  </style>
+
+  <style>  /* Styles for the page header */
+
+  </style>
+  <header id="page-header" role="navigation">
+    <div id="logo" aria-hidden="true">
       <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/logo.svg" alt="Trulia.com Logo">
     </div>
     <nav id="left-menu" class="menu">
-      <ul>
-        <li><a href="#">buy</a></li>
-        <li><a href="#">rent</a></li>
-        <li><a href="#">mortgage</a></li>
-        <li><a href="#">local scoop</a></li>
+      <ul role="menubar">
+        <li role="menuitem"><a href="#">buy</a></li>
+        <li role="menuitem"><a href="#">rent</a></li>
+        <li role="menuitem"><a href="#">mortgage</a></li>
+        <li role="menuitem"><a href="#">local scoop</a></li>
       </ul>
     </nav>
     <nav id="right-menu" class="menu">
-      <ul>
-        <li><a href="#">Saved Homes</a></li>
-        <li><a href="#">Saved Searches</a></li>
-        <li><a href="#">J</a></li>
+      <ul role="menubar">
+        <li role="menuitem"><a href="#">Saved Homes</a></li>
+        <li role="menuitem"><a href="#">Saved Searches</a></li>
+        <li role="menuitem"><a href="#" aria-label="Sign up or join Trulia">J</a></li>
       </ul>
     </nav>
   </header>
-  <section id="result-report">
-    <div>Homes For Sale &amp; Real Estate in 20010</div>
-    <div>79 homes available on Trulia</div>
-  </section>
-  <section id="showcase">
-    <section class="unit-listing new-list owner-list list-higher known-neighborhood">
-      <section class="unit-image">
-        <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-8.jpg')" title="Photo of unit at 752 Park Rd NW">
-          <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
-        </div>
-      </section>
-      <section class="unit-info">
-        <header class="unit-price">
-          <span class="ask-usd">760,000</span>
-        </header>
-        <section class="unit-data">
-          <ul class="unit-stats">
-            <li class="beds"><span class="unit-beds">3</span></li>
-            <li class="baths"><span class="unit-baths">3</span></li>
-            <li class="footage"><span class="unit-footage">1920</span> sqft</li>
-          </ul>
-        </section>
-        <section class="unit-location">
-          <div class="unit-address">752 Park Rd NW</div>
-          <div class="unit-area">
-            <span class="unit-neighborhood">Columbia Heights</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
-          </div>
-        </section>
-      </section>
-    </section>
-    <section class="unit-listing new-list owner-list list-lower known-neighborhood">
-      <section class="unit-image">
-        <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-6.jpg')" title="Photo of unit at 1363 Oak St NW">
-          <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
-        </div>
-      </section>
-      <section class="unit-info">
-        <header class="unit-price">
-          <span class="ask-usd">1,049,000</span>
-        </header>
-        <section class="unit-data">
-          <ul class="unit-stats">
-            <li class="beds"><span class="unit-beds">6</span></li>
-            <li class="baths"><span class="unit-baths">4</span></li>
-            <li class="footage"><span class="unit-footage">2688</span> sqft</li>
-          </ul>
-        </section>
-        <section class="unit-location">
-          <div class="unit-address">752 Park Rd NW</div>
-          <div class="unit-area">
-            <span class="unit-neighborhood">Columbia Heights</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
-          </div>
-        </section>
-      </section>
-    </section>
-  </section>
-  <section id="pagination">
-    <nav class="page-nav">
-      <ul class="page-list">
-        <li class="page-link"><a href="#">&lt;</a></li>
-        <li class="page-link"><a href="#">1</a></li>
-        <li class="page-link"><a href="#">2</a></li>
-        <li class="page-link"><a href="#">s</a></li>
-        <li class="page-link"><a href="#">&gt;</a></li>
-      </ul>
-    </nav>
-    <div id="pagination-results">
-      <div>1 - 30 of 79 Results</div>
-    </div>
-    <ul id="location-trail">
-      <li id="country-link"><a href="#">United States</a></li>
-      <li id="state-link"><a href="#">District of Columbia</a></li>
-      <li id="city-link"><a href="#">Washingtion</a></li>
-      <li id="zipcode-link">20010</li>
-    </ul>
-  </section>
-  <section id="area-report">
-    <header id="area-report-header">
-      20010 Real Estate Insights
+
+  <style>  /* Styles for the search results */
+
+  </style>
+  <main id="search-results">
+  <style>  /* Styles for the search results - header */
+
+  </style>
+    <header id="search-report" aria-title="Search results summary">
+      <div>Homes For Sale &amp; Real Estate in <span id="search-header-zip">20010</span></div>
+      <div><span id="search-result-tally">79</span> homes available on Trulia</div>
     </header>
-    <main>
+  <style>  /* Styles for the search results - showcase */
+
+  </style>
+    <main id="showcase" aria-label="properties matching the search">
+      <section class="unit-listing new-list owner-list list-higher named-area">
+        <section class="unit-image" aria-hidden="true">
+          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-8.jpg')" title="Photo of unit at 752 Park Rd NW">
+            <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
+          </div>
+        </section>
+        <section class="unit-info">
+          <header class="unit-price">
+            <span class="ask-usd">760,000</span>
+          </header>
+          <section class="unit-data">
+            <ul class="unit-stats">
+              <li class="beds"><span class="unit-beds">3</span></li>
+              <li class="baths"><span class="unit-baths">3</span></li>
+              <li class="footage"><span class="unit-footage">1920</span></li>
+            </ul>
+          </section>
+          <section class="unit-location">
+            <div class="unit-address">752 Park Rd NW</div>
+            <div class="unit-area">
+              <span class="unit-area">Columbia Heights</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
+            </div>
+          </section>
+        </section>
+      </section>
+      <section class="unit-listing new-list owner-list list-lower named-area">
+        <section class="unit-image" aria-hidden="true">
+          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-6.jpg')" title="Photo of unit at 1363 Oak St NW">
+            <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
+          </div>
+        </section>
+        <section class="unit-info">
+          <header class="unit-price">
+            <span class="ask-usd">1,049,000</span>
+          </header>
+          <section class="unit-data">
+            <ul class="unit-stats">
+              <li class="beds"><span class="unit-beds">6</span></li>
+              <li class="baths"><span class="unit-baths">4</span></li>
+              <li class="footage"><span class="unit-footage">2688</span></li>
+            </ul>
+          </section>
+          <section class="unit-location">
+            <div class="unit-address">752 Park Rd NW</div>
+            <div class="unit-area">
+              <span class="unit-area">Columbia Heights</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
+            </div>
+          </section>
+        </section>
+      </section>
+    </main>
+  <style>  /* Styles for the search results - footer */
+
+  </style>
+    <footer id="search-pagination" role="naviagtion">
+      <nav class="page-nav">
+        <ul class="page-list" role="menubar" aria-label="Search resutls pages">
+          <li class="page-link" role="menuitem" id="first-page-link"><a href="#" aria-label="first page">&#x2bec;</a></li>
+          <li class="page-link" role="menuitem" id="prev-page-link"><a href="#" aria-label="previous page">&#x2b9c;</a></li>
+          <li class="page-link" role="menuitem"><a href="#">1</a></li>
+          <li class="page-link" role="menuitem"><a href="#">2</a></li>
+          <li class="page-link" role="menuitem"><a href="#">3</a></li>
+          <li class="page-link" role="menuitem" id="next-page-link"><a href="#" aria-label="next page">&#x2b9e;</a></li>
+          <li class="page-link" role="menuitem" id="last-page-link"><a href="#" aria-label="last page">&#x2bee;</a></li>
+        </ul>
+      </nav>
+      <div id="pagination-results">
+        <div><span id="showcase-start">1</span> - <span id="showcase-end">30</span> of <span id="showcase-limit">79</span> Results</div>
+      </div>
+      <ul id="location-crumb" role="menubar" aria-label="Geographic area options">
+        <li id="country-crumb" role="menuitem"><a href="#" area-label="Country">United States</a></li>
+        <li id="state-crumb" role="menuitem"><a href="#" area-label="State or province">District of Columbia</a></li>
+        <li id="city-crumb" role="menuitem"><a href="#" area-label="City">Washingtion</a></li>
+        <li id="zipcode-crumb">20010</li>
+      </ul>
+    </footer>
+  </main>
+
+  <style>  /* Styles for the area report */
+
+  </style>
+  <section id="area-report" aria-labelledby="area-report-title">
+    <header id="area-report-header">
+      <h3 id="area-report-title">20010 Real Estate Insights</h3>
+    </header>
+    <main id="area-report-body">
       <p>
         Zipcode 20010 is located in Washington, District of Columbia.
       </p>
@@ -316,19 +375,23 @@
       </p>
     </main>
   </section>
-  <footer>
+
+  <style>  /* Styles for the page footer */
+
+  </style>
+  <footer class="page-footer" role="navigation">
     <nav id="footer-nav">
-      <ul>
-        <li><a href="#">About Trulia</a></li>
-        <li><a href="#">About Zillow Group</a></li>
-        <li><a href="#">Careers</a></li>
-        <li><a href="#">Investor Relations</a></li>
-        <li><a href="#">Advertising Terms</a></li>
-        <li><a href="#">Privacy Terms of Use</a></li>
-        <li><a href="#">Listings Quality Policy</a></li>
-        <li><a href="#">Subscription Terms</a></li>
-        <li><a href="#">Ad Choices</a></li>
-        <li><a href="#">Help</a></li>
+      <ul role="menubar">
+        <li role="menuitem"><a href="#">About Trulia</a></li>
+        <li role="menuitem"><a href="#">About Zillow Group</a></li>
+        <li role="menuitem"><a href="#">Careers</a></li>
+        <li role="menuitem"><a href="#">Investor Relations</a></li>
+        <li role="menuitem"><a href="#">Advertising Terms</a></li>
+        <li role="menuitem"><a href="#">Privacy Terms of Use</a></li>
+        <li role="menuitem"><a href="#">Listings Quality Policy</a></li>
+        <li role="menuitem"><a href="#">Subscription Terms</a></li>
+        <li role="menuitem"><a href="#">Ad Choices</a></li>
+        <li role="menuitem"><a href="#">Help</a></li>
       </ul>
     </nav>
     <div id="copyright">
