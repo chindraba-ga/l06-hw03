@@ -7,12 +7,18 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
   <meta name="author" content="Chindraba (Ronald Lamoreaux)">
   <title>Lesson 6: Assignment: Rebuild a page from Trulia</title>
+  <link href="https://https://yarnpkg.com/en/package/normalize.css" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.google.com/?category=Sans+Serif&selection.family=Lato">
   <style>
   /* Layout the entire page as a grid, with 1 column per row */
     body {
+      color: rgba(34,34,34,1);
+      font-size: 14px;
+      font-family: 'Source Sans Pro', sans-serif;
       display: grid;
+      line-height: 1.4;
       grid-template-columns: 100%;
+      margin-bottom: 0;
     }
 
 /*
@@ -75,13 +81,6 @@
     .unit-address::before {
       content: "\1f4cd\20";
       font-weight: bold;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    li {
-      display: inline-block;
     }
     .unit-stats li {
       padding-right: .75em;
@@ -243,31 +242,75 @@
     h1, h2, h3, h4, h5, h6, ul, li {
       padding: 0;
     }
-
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      display: inline-block;
+    }
+    a, a:active, a:hover, a:visited {
+      color: inherit;
+      text-decoration: none;
+      text-transform: capitalize;
+    }
   </style>
 
   <style>  /* Styles for the page header */
-
+    #page-header {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 0 0.857em;
+      height: 2.857em;
+      color: white;
+      background-color: rgba(32,192,99,1);
+    }
+    #header-menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-grow: 1;
+    }
+    #header-menu li {
+      padding: 0 0.857em;
+    }
+    #logo {
+      width: 5.571em;
+      height: 1.786em;
+      padding: 0 0.857em;
+    }
+    #join-link {
+      display: inline-block;
+      height: 1.429em;
+      width: 1.571em;
+      border: 2px white solid;
+      border-radius: 1.571em;
+      text-align: center;
+    }
   </style>
   <header id="page-header" role="navigation">
     <div id="logo" aria-hidden="true">
       <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/logo.svg" alt="Trulia.com Logo">
     </div>
-    <nav id="left-menu" class="menu">
-      <ul role="menubar">
-        <li><a href="#" role="menuitem">buy</a></li>
-        <li><a href="#" role="menuitem">rent</a></li>
-        <li><a href="#" role="menuitem">mortgage</a></li>
-        <li><a href="#" role="menuitem">local scoop</a></li>
-      </ul>
-    </nav>
-    <nav id="right-menu" class="menu">
-      <ul role="menubar">
-        <li><a href="#" role="menuitem">Saved Homes</a></li>
-        <li><a href="#" role="menuitem">Saved Searches</a></li>
-        <li><a href="#" role="menuitem" aria-label="Sign up or join Trulia">J</a></li>
-      </ul>
-    </nav>
+    <div id="header-menu">
+      <nav id="left-menu" class="menu">
+        <ul role="menubar">
+          <li><a href="#" role="menuitem">buy</a></li>
+          <li><a href="#" role="menuitem">rent</a></li>
+          <li><a href="#" role="menuitem">mortgage</a></li>
+          <li><a href="#" role="menuitem">local scoop</a></li>
+        </ul>
+      </nav>
+      <nav id="right-menu" class="menu">
+        <ul role="menubar">
+          <li><a href="#" role="menuitem">Saved Homes</a></li>
+          <li><a href="#" role="menuitem">Saved Searches</a></li>
+          <li><a href="#" role="menuitem" id="join-link" aria-label="Sign up or join Trulia">J</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <style>  /* Styles for the search results */
