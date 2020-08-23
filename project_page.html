@@ -259,6 +259,9 @@
       text-decoration: none;
       text-transform: capitalize;
     }
+    .lite {
+      color: rgb(120,125,129);
+    }
   </style>
 
   <style>  /* Styles for the page header */
@@ -387,7 +390,26 @@
     </main>
 
   <style>  /* Styles for the search results - footer */
-
+    #search-pagination {
+      background: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 25px 0;
+    }
+    #search-pagination > * {
+      margin: 5px;
+    }
+    #search-pagination a {
+      color: rgb(58,142,82);
+    }
+    #location-crumb li[role='menuitem']::after {
+      content: '\a0\a0\226b\a0\a0';
+    }
+    .page-link {
+      padding: 0 10px;
+    }
   </style>
     <footer id="search-pagination" role="naviagtion">
       <nav class="page-nav">
@@ -402,7 +424,7 @@
         </ul>
       </nav>
       <div id="pagination-results">
-        <div><span id="showcase-start">1</span> - <span id="showcase-end">30</span> of <span id="showcase-limit">79</span> Results</div>
+        <div class="lite"><span id="showcase-start">1</span> - <span id="showcase-end">30</span> of <span id="showcase-limit">79</span> Results</div>
       </div>
       <ul id="location-crumb" role="menubar" aria-label="Geographic area options">
         <li id="country-crumb" role="menuitem"><a href="#" area-label="Country">United States</a></li>
