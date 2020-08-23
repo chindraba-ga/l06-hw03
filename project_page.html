@@ -7,7 +7,9 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
   <meta name="author" content="Chindraba (Ronald Lamoreaux)">
   <title>Lesson 6: Assignment: Rebuild a page from Trulia</title>
+  <link href="https://https://yarnpkg.com/en/package/normalize.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/symbola" type="text/css"/>
   <style>
   /* Layout the entire page as a grid, with 1 column per row */
     body {
@@ -44,35 +46,41 @@
     }
 
 /* Create the symbols and labels for various unit information fields */
-    .ask-usd::before {
+    .ask-price::before {
       content: '\24';
     }
-    .list-lower .ask-usd::after {
-      color: darkgreen;
-      content: '\a0\2191';
+    .list-lower .ask-price::after {
+      color: green;
+      content: '\a0\2193';
       font-size: 1.25em;
       font-weight: bold;
     }
-    .list-higher .ask-usd::after {
+    .list-higher .ask-price::after {
       color: red;
-      content: '\a0\2193';
+      content: '\a0\2191';
       font-size: 1.25em;
       font-weight: bold;
     }
     .unit-beds::before {
       content: '\1f6cf\a0';
+      font-family: 'SymbolaRegular';
+      color: navy;
     }
     .unit-beds::after {
       content: '\a0\62\64';
     }
     .unit-baths::before {
       content: '\1f6c0\a0';
+      font-family: 'SymbolaRegular';
+      color: navy;
     }
     .unit-baths::after {
       content: '\a0\62\61';
     }
     .unit-footage::before {
       content: '\25e3\a0';
+      font-family: 'SymbolaRegular';
+      color: navy;
     }
     .unit-footage::after {
       content: '\a0\73\71\72\74';
@@ -80,6 +88,8 @@
     .unit-address::before {
       content: "\1f4cd\20";
       font-weight: bold;
+      font-family: 'SymbolaRegular';
+      color: red;
     }
     .unit-stats li {
       padding-right: .75em;
@@ -260,6 +270,9 @@
     .lite {
       color: rgb(120,125,129);
     }
+    .bold {
+      font-weight: bold;
+    }
   </style>
 
   <style>  /* Styles for the page header */
@@ -351,7 +364,7 @@
         </section>
         <section class="unit-info" role="region" aria-label="information about unit at 752 Park Rd NW">
           <header class="unit-price">
-            <span class="ask-usd" aria-label="list price">760,000</span>
+            <span class="ask-price" aria-label="list price">760,000</span>
           </header>
           <section class="unit-data">
             <ul class="unit-stats">
@@ -368,7 +381,7 @@
           </section>
         </section>
       </section>
-      <section class="unit-listing new-list owner-list list-higher named-area">
+      <section class="unit-listing new-list owner-list list-lower named-area">
         <section class="unit-image" aria-hidden="true">
           <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-8.jpg')" title="Photo of unit at 1363 Oak St NW">
             <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
@@ -376,7 +389,7 @@
         </section>
         <section class="unit-info" rol="region" aria-label="information about unit at 752 Park Rd NW">
           <header class="unit-price">
-            <span class="ask-usd" aria-label="list price">1,049,000</span>
+            <span class="ask-price" aria-label="list price">1,049,000</span>
           </header>
           <section class="unit-data">
             <ul class="unit-stats">
@@ -420,13 +433,13 @@
     <footer id="search-pagination" role="naviagtion">
       <nav class="page-nav">
         <ul class="page-list" role="menubar" aria-label="Search resutls pages">
-          <li class="page-link" id="first-page-link" title="First page"><a href="#" role="menuitem" aria-label="go to first page">&#x226a;</a></li>
-          <li class="page-link" id="prev-page-link" title="Previous page"><a href="#" role="menuitem" aria-label="go to previous page">&#x3c;</a></li>
+          <li class="page-link" id="first-page-link" title="First page"><a href="#" class="bold" role="menuitem" aria-label="go to first page">|&#x226a;</a></li>
+          <li class="page-link" id="prev-page-link" title="Previous page"><a href="#" class="bold" role="menuitem" aria-label="go to previous page">&#x226a;</a></li>
           <li class="page-link"><a href="#" role="menuitem" aria-label="go to page 1">1</a></li>
           <li class="page-link"><a href="#" role="menuitem" aria-label="go to page 2">2</a></li>
           <li class="page-link"><a href="#" role="menuitem" aria-label="go to page 3">3</a></li>
-          <li class="page-link" id="next-page-link" title="Next page"><a href="#" role="menuitem" aria-label="go to next page">&#x3e;</a></li>
-          <li class="page-link" id="last-page-link" title="Last page"><a href="#" role="menuitem" aria-label="go to last page">&#x226b;</a></li>
+          <li class="page-link" id="next-page-link" title="Next page"><a href="#" class="bold" role="menuitem" aria-label="go to next page">&#x226b;</a></li>
+          <li class="page-link" id="last-page-link" title="Last page"><a href="#" class="bold" role="menuitem" aria-label="go to last page">&#x226b;|</a></li>
         </ul>
       </nav>
       <div id="pagination-results">
