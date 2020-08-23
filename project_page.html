@@ -17,7 +17,9 @@
       font-family: 'Source Sans Pro', sans-serif;
       display: grid;
       line-height: 1.4;
+      background: rgba(97,96,95,.25);
       grid-template-columns: 100%;
+
     }
 
 /*
@@ -238,8 +240,11 @@
 
   <style>  /* The globally applied styles and overrides */
     /* Override the behavior of some base elements */
-    h1, h2, h3, h4, h5, h6, ul, li {
+    h1, h2, h3, h4, h5, h6, ul, li, p {
       padding: 0;
+    }
+    p {
+      margin: 0;
     }
     ul {
       list-style-type: none;
@@ -409,11 +414,27 @@
   </main>
 
   <style>  /* Styles for the area report */
-
+    #area-report {
+      margin-bottom: 15px;
+      padding: 0 30px;
+      background: white;
+    }
+    #area-report-title {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+    #area-report-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      width: 90%;
+      padding: 0 30px;
+    }
   </style>
   <section id="area-report" aria-labelledby="area-report-title">
     <header id="area-report-header">
-      <h3 id="area-report-title">20010 Real Estate Insights</h3>
+      <h3 id="area-report-title"><span id="insight-zipcode">20010</span> Real Estate Insights</h3>
     </header>
     <main id="area-report-body">
       <p>
