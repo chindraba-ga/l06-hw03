@@ -9,6 +9,7 @@
   <title>Lesson 6: Assignment: Rebuild a page from Trulia</title>
   <link href="https://https://yarnpkg.com/en/package/normalize.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/symbola" type="text/css"/>
   <style>
   /* Layout the entire page as a grid, with 1 column per row */
@@ -46,8 +47,25 @@
     }
 
 /* Create the symbols and labels for various unit information fields */
-    .ask-price::before {
+    .ask-price::before, .unit-beds::before, .unit-baths::before, .unit-footage::before {
+      font-family: 'SymbolaRegular', san-serif;
+      font-weight: normal;
+    }
+    .usd::before {
       content: '\24';
+    }
+    .euro::before {
+      content: '\20ac';
+    }
+    .yen::before {
+      content: '\00a5';
+    }
+    .gbp::before {
+      content: '\00a3';
+    }
+    .btc::before {
+      content: '\20bf';
+      font-family: 'Source Serif Pro', serif;
     }
     .list-lower .ask-price::after {
       color: green;
@@ -63,7 +81,6 @@
     }
     .unit-beds::before {
       content: '\1f6cf\a0';
-      font-family: 'SymbolaRegular';
       color: navy;
     }
     .unit-beds::after {
@@ -71,7 +88,6 @@
     }
     .unit-baths::before {
       content: '\1f6c0\a0';
-      font-family: 'SymbolaRegular';
       color: navy;
     }
     .unit-baths::after {
@@ -79,7 +95,6 @@
     }
     .unit-footage::before {
       content: '\25e3\a0';
-      font-family: 'SymbolaRegular';
       color: navy;
     }
     .unit-footage::after {
@@ -87,8 +102,6 @@
     }
     .unit-address::before {
       content: "\1f4cd\20";
-      font-weight: bold;
-      font-family: 'SymbolaRegular';
       color: red;
     }
     .unit-stats li {
@@ -363,8 +376,8 @@
           </div>
         </section>
         <section class="unit-info" role="region" aria-label="information about unit at 752 Park Rd NW">
-          <header class="unit-price">
-            <span class="ask-price" aria-label="list price">760,000</span>
+          <header class="unit-price bold">
+            <span class="ask-price usd" aria-label="list price">760,000</span>
           </header>
           <section class="unit-data">
             <ul class="unit-stats">
@@ -381,15 +394,15 @@
           </section>
         </section>
       </section>
-      <section class="unit-listing new-list owner-list list-lower named-area">
+      <section class="unit-listing owner-list list-lower named-area">
         <section class="unit-image" aria-hidden="true">
           <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-8.jpg')" title="Photo of unit at 1363 Oak St NW">
             <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
           </div>
         </section>
         <section class="unit-info" rol="region" aria-label="information about unit at 752 Park Rd NW">
-          <header class="unit-price">
-            <span class="ask-price" aria-label="list price">1,049,000</span>
+          <header class="unit-price bold">
+            <span class="ask-price btc" aria-label="list price">1,049,000</span>
           </header>
           <section class="unit-data">
             <ul class="unit-stats">
@@ -406,7 +419,57 @@
           </section>
         </section>
       </section>
-    </main>
+      <section class="unit-listing new-list list-higher named-area">
+        <section class="unit-image" aria-hidden="true">
+          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-8.jpg')" title="Photo of unit at 752 Park Rd NW">
+            <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
+          </div>
+        </section>
+        <section class="unit-info" role="region" aria-label="information about unit at 752 Park Rd NW">
+          <header class="unit-price bold">
+            <span class="ask-price yen" aria-label="list price">760,000</span>
+          </header>
+          <section class="unit-data">
+            <ul class="unit-stats">
+              <li class="beds" aria-label="bedrooms"><span class="unit-beds">3</span></li>
+              <li class="baths" aria-label="bathrooms"><span class="unit-baths">3</span></li>
+              <li class="footage" aria-label="square footage"><span class="unit-footage">1920</span></li>
+            </ul>
+          </section>
+          <section class="unit-location">
+            <div class="unit-address" aria-label="address">752 Park Rd NW</div>
+            <div class="unit-area">
+              <span class="unit-area">Columbia Heights</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
+            </div>
+          </section>
+        </section>
+      </section>
+      <section class="unit-listing owner-list list-lower named-area">
+        <section class="unit-image" aria-hidden="true">
+          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-8.jpg')" title="Photo of unit at 1363 Oak St NW">
+            <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
+          </div>
+        </section>
+        <section class="unit-info" rol="region" aria-label="information about unit at 752 Park Rd NW">
+          <header class="unit-price bold">
+            <span class="ask-price gbp" aria-label="list price">1,049,000</span>
+          </header>
+          <section class="unit-data">
+            <ul class="unit-stats">
+              <li class="beds" aria-label="bedrooms"><span class="unit-beds">6</span></li>
+              <li class="baths" aria-label="bathrooms"><span class="unit-baths">4</span></li>
+              <li class="footage" aria-label="square footage"><span class="unit-footage">2688</span></li>
+            </ul>
+          </section>
+          <section class="unit-location">
+            <div class="unit-address" aria-label="address">1363 Oak St NW</div>
+            <div class="unit-area">
+              <span class="unit-area">Columbia Heights</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
+            </div>
+          </section>
+        </section>
+      </section>
+      </main>
 
   <style>  /* Styles for the search results - footer */
     #search-pagination {
