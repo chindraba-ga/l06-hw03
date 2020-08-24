@@ -12,100 +12,252 @@
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/symbola" type="text/css"/>
   <style>
-  /* Layout the entire page as a grid, with 1 column per row */
-    body {
+  /* The globally applied styles and overrides */
+    html {
+      line-height: 1.4;
       color: rgba(34,34,34,1);
+      background-color: rgba(0,0,0,0);
       font-size: 14px;
       font-family: 'Source Sans Pro', sans-serif;
+    }
+  /* Layout the entire page as a grid, with 1 column per row */
+    body {
       display: grid;
-      line-height: 1.4;
-      background: rgba(0,0,0,0);
       grid-template-columns: 100%;
     }
+  /* Override the behavior of some base elements */
+    h1, h2, h3, h4, h5, h6, ul, li, p {
+      padding: 0;
+    }
+    p, ul {
+      margin: 0;
+    }
+    ul {
+      list-style-type: none;
+    }
+    li {
+      display: inline-block;
+    }
+    .bold {
+      font-weight: bold;
+    }
+    .bright {
+      color: rgb(255,255,255);
+    }
+    .circled {
+      border-color: rgb(255,255,255);
+    }
+    .fade {
+      color: rgb(120,125,129);
+    }
+    .pale {
+      color: rgb(177,182,187);
+    }
+    .onBright {
+      background-color: rgb(255,255,255);
+    }
+    .onColorFoot {
+      background-color: rgb(71,78,82);
+    }
+    .onColorNav {
+      background-color: rgb(50,182,76);
+    }
+    a, a:active, a:hover, a:visited {
+      color: rgb(58,142,82);
+    }
+    .menu a, .menu a:active, .menu a:hover, .menu a:visited {
+      color: inherit;
+      font-weight: 600;
+      text-decoration: none;
+      text-transform: capitalize;
+    }
+    .footer-link a, .menu a:active, .menu a:hover, .menu a:visited {
+      color: inherit;
+      text-decoration: none;
+      text-transform: capitalize;
+    }
+    .list-lower .ask-price::after {
+      color: rgba(0,100,0,1);
+    }
+    .list-higher .ask-price::after {
+      color: rgba(180,0,0,1);
+    }
+    .unit-address::before {
+      color: rgba(180,0,0,1);
+    }
+    .unit-stats li::before {
+      color: rgba(0,0,192,1);
+    }
+  /* Styles for the page header */
+    #page-header {
+      height: 2.857em;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    #header-menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-grow: 1;
+    }
+    #header-menu li, #logo {
+      padding: 0 0.857em;
+    }
+    #logo {
+      width: 5.571em;
+      height: 1.786em;
+    }
+    .circled {
+      display: inline-block;
+      height: 1.429em;
+      width: 1.571em;
+      border-width: px;
+      border-style: solid;
+      border-radius: 1.571em;
+      text-align: center;
+    }
+  /* Styles for the page footer */
+    #footer-menu {
+      padding: 1.429em 0 0 2.143em;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .footer-link {
+      margin: 0 .714em;
+      font-size: 1.071em;
+    }
+    #copyright-container {
+      display: flex;
+      justify-content: space-between;
+    }
+    #copyright {
+      margin-top: 1.071em;
+      padding-left: 2.143em;
+      font-size: 0.714em;
+      flex-grow: 1;
+    }
+  /* Styles for the main section of the page, the search results */
+  /* Styles for the search results - header */
+    #report-title {
+      padding: 1.33em 0;
+      font-weight: bold;
+    }
+    #report-tally {
+      padding-bottom: 1.071em;
+    }
+  /* Styles for the area report */
+    #area-report {
+      margin-bottom: 1.071em;
+      padding: 0 2.143em;
+    }
+    #area-report-title {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+    #area-report-body {
+      width: 90%;
+      padding: 0 2.143em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+  /* Styles for the search results - footer */
+    #search-pagination {
+      padding: 1.788em 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    #search-pagination > * {
+      margin: .357em;
+    }
+    .page-link {
+      padding: 0 .714em;
+    }
 
-/*
-    ### Colors
-    Green: #20c063 / RGBA(32,192,99,1)
-    Gray: #e8e9ea  / RGBA (232,233,234,1)
-    Dark Text: #3b4144 / RGBA (59,65,68,1)
-*/
-
-/* Create the toggles for display of optional elements */
+  /* Create the decorations, symbols and flags for enhancing content */
+    #location-crumb li[role='menuitem']::after {
+      content: '\a0\a0\226b\a0\a0';
+    }
+    /* Create the toggles for display of optional elements */
     /* Add a comma after the city name, and neighborhood name if present */
-    .named-area .unit-area::after, .unit-city::after {
-      content: '\2c\20';
+    .unit-metro:not(:empty)::after, .unit-city::after {
+      content: '\2c\a0';
     }
     /* Add a flag to the photo for new listings */
     .new-list .unit-new {
       display: inline-block;
-      background-color: rgb(32,192,99,0.35);
+      background-color: rgba(32,192,99,0.35);
     }
     /* Add a flag to the photo for listings by the owner */
     .owner-list .unit-owner {
       display: inline-block;
-      background-color: rgb(134,144,152,0.45);
+      background-color: rgba(134,144,152,0.85);
     }
-
-/* Create the symbols and labels for various unit information fields */
-    .ask-price::before, .unit-beds::before, .unit-baths::before, .unit-footage::before {
+  /* Create the symbols and labels for various unit information fields */
+    /* Unless overridden in a declaration, the symbols are from the Symbola font */
+    .ask-price::before, .unit-stats > li > span::before {
       font-family: 'SymbolaRegular', san-serif;
       font-weight: normal;
     }
-    .usd::before {
-      content: '\24';
+    .unit-stats > li > span::before {
+      font-weight: bold; /* normal; */
     }
-    .euro::before {
-      content: '\20ac';
-    }
-    .yen::before {
-      content: '\00a5';
-    }
-    .gbp::before {
-      content: '\00a3';
+    /* Currency symbols added to the left of the list price */
+    .ask-price::before {
+      content: '\24\a0';
     }
     .btc::before {
-      content: '\20bf';
+      content: '\20bf\a0';
       font-family: 'Source Serif Pro', serif;
     }
-    .list-lower .ask-price::after {
-      color: green;
-      content: '\a0\2193';
+    .euro::before {
+      content: '\20ac\a0';
+    }
+    .gbp::before {
+      content: '\00a3\a0';
+    }
+    .yen::before {
+      content: '\00a5\a0';
+    }
+    .ask-price::after {
+      font-family: 'Source Sans Pro', sans-serif;
       font-size: 1.25em;
       font-weight: bold;
     }
+    .list-lower .ask-price::after {
+      content: '\a0\2193';
+    }
     .list-higher .ask-price::after {
-      color: red;
       content: '\a0\2191';
-      font-size: 1.25em;
-      font-weight: bold;
     }
     .unit-beds::before {
       content: '\1f6cf\a0';
-      color: navy;
     }
     .unit-beds::after {
       content: '\a0\62\64';
     }
     .unit-baths::before {
       content: '\1f6c0\a0';
-      color: navy;
     }
     .unit-baths::after {
       content: '\a0\62\61';
     }
     .unit-footage::before {
       content: '\25e3\a0';
-      color: navy;
     }
     .unit-footage::after {
       content: '\a0\73\71\72\74';
     }
     .unit-address::before {
       content: "\1f4cd\20";
-      color: red;
     }
+
     .unit-stats li {
-      padding-right: .75em;
+      padding: 0 .75em .143em 0;
     }
   </style>
 </head>
@@ -229,98 +381,8 @@
 
 
 
-
-    HTML Skeleton to get you going:
-    <main class="trulia-grid">
 -->
-        <!-- Example grid-item -->
-<!--    <section class="trulia-grid-item">
-          <div class="trulia-house-image">
-            <img src="#" alt="">
-          </div>
-          <ul class="trulia-house-facts">
-            <li class="trulia-house-price"></li>
-            <li class="trulia-house-stats">
-              <ul>
-                <li class="trulia-house-beds-icon"></li>
-                <li class="trulia-house-beds"></li>
-                <li class="trulia-house-baths-icon"></li>
-                <li class="trulia-house-baths"></li>
-                <li class="trulia-house-sqft"></li>
-              </ul>
-            </li>
-            <li class="trulia-house-address">
-            </li>
-            <li class="trulia-house-location">
-            </li>
-          </ul>
-        </section>
-      
-      </main>
--->
-
-  <style>  /* The globally applied styles and overrides */
-    /* Override the behavior of some base elements */
-    h1, h2, h3, h4, h5, h6, ul, li, p {
-      padding: 0;
-    }
-    p {
-      margin: 0;
-    }
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-    }
-    li {
-      display: inline-block;
-    }
-    a, a:active, a:hover, a:visited {
-      color: inherit;
-      text-decoration: none;
-      text-transform: capitalize;
-    }
-    .lite {
-      color: rgb(120,125,129);
-    }
-    .bold {
-      font-weight: bold;
-    }
-  </style>
-
-  <style>  /* Styles for the page header */
-    #page-header {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      height: 2.857em;
-      color: white;
-      background-color: rgba(32,192,99,1);
-    }
-    #header-menu {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-grow: 1;
-    }
-    #header-menu li {
-      padding: 0 0.857em;
-    }
-    #logo {
-      width: 5.571em;
-      height: 1.786em;
-      padding: 0 0.857em;
-    }
-    #join-link {
-      display: inline-block;
-      height: 1.429em;
-      width: 1.571em;
-      border: 2px white solid;
-      border-radius: 1.571em;
-      text-align: center;
-    }
-  </style>
-  <header id="page-header" role="navigation">
+  <header id="page-header" class="bright onColorNav" role="navigation">
     <div id="logo" aria-hidden="true">
       <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/logo.svg" alt="Trulia.com Logo">
     </div>
@@ -337,47 +399,26 @@
         <ul role="menubar">
           <li><a href="#" role="menuitem">Saved Homes</a></li>
           <li><a href="#" role="menuitem">Saved Searches</a></li>
-          <li><a href="#" role="menuitem" id="join-link" aria-label="Sign up or join Trulia">J</a></li>
+          <li><a href="#" role="menuitem" id="join-link" aria-label="Sign up or join Trulia"><span class="circled">J</span> jsir</a></li>
         </ul>
       </nav>
     </div>
   </header>
-
-  <style>  /* Styles for the search results */
-
-  </style>
   <main id="search-results">
-
-  <style>  /* Styles for the search results - header */
-    #search-report {
-      background: white;
-    }
-    #report-title {
-      font-weight: bold;
-      padding: 1.33em 0;
-    }
-    #report-tally {
-      padding-bottom: 1.071em;
-    }
-  </style>
-    <header id="search-report">
+    <header id="search-report" class="onBright">
       <div id="report-title">Homes For Sale &amp; Real Estate in <span id="search-header-zip">20010</span></div>
       <div id="report-tally"><span id="search-result-tally">79</span> homes available on Trulia</div>
     </header>
-
-  <style>  /* Styles for the search results - showcase */
-
-  </style>
     <main id="showcase" role="region" aria-labelledby="pagination-results">
-      <section class="unit-listing new-list owner-list list-higher named-area">
+      <section class="unit-listing new-list owner-list list-higher">
         <section class="unit-image" aria-hidden="true">
-          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-8.jpg')" title="Photo of unit at 752 Park Rd NW">
+          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-2.jpg')" title="Photo of unit at 752 Park Rd NW">
             <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
           </div>
         </section>
         <section class="unit-info" role="region" aria-label="information about unit at 752 Park Rd NW">
           <header class="unit-price bold">
-            <span class="ask-price usd" aria-label="list price">760,000</span>
+            <span class="ask-price" aria-label="list price">760,000</span>
           </header>
           <section class="unit-data">
             <ul class="unit-stats">
@@ -387,16 +428,16 @@
             </ul>
           </section>
           <section class="unit-location">
-            <div class="unit-address" aria-label="address">752 Park Rd NW</div>
-            <div class="unit-area">
-              <span class="unit-area">Columbia Heights</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
+            <div class="unit-address fade" aria-label="address">752 Park Rd NW</div>
+            <div class="unit-area fade">
+              <span class="unit-metro">Columbia Heights</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
             </div>
           </section>
         </section>
       </section>
-      <section class="unit-listing owner-list list-lower named-area">
+      <section class="unit-listing owner-list list-lower">
         <section class="unit-image" aria-hidden="true">
-          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-8.jpg')" title="Photo of unit at 1363 Oak St NW">
+          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-5.jpg')" title="Photo of unit at 1363 Oak St NW">
             <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
           </div>
         </section>
@@ -412,16 +453,16 @@
             </ul>
           </section>
           <section class="unit-location">
-            <div class="unit-address" aria-label="address">1363 Oak St NW</div>
-            <div class="unit-area">
-              <span class="unit-area">Columbia Heights</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
+            <div class="unit-address fade" aria-label="address">1363 Oak St NW</div>
+            <div class="unit-area fade">
+              <span class="unit-metro"></span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
             </div>
           </section>
         </section>
       </section>
-      <section class="unit-listing new-list list-higher named-area">
+      <section class="unit-listing new-list list-higher named-metro">
         <section class="unit-image" aria-hidden="true">
-          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-8.jpg')" title="Photo of unit at 752 Park Rd NW">
+          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-12.jpg')" title="Photo of unit at 752 Park Rd NW">
             <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
           </div>
         </section>
@@ -437,14 +478,14 @@
             </ul>
           </section>
           <section class="unit-location">
-            <div class="unit-address" aria-label="address">752 Park Rd NW</div>
-            <div class="unit-area">
-              <span class="unit-area">Columbia Heights</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
+            <div class="unit-address fade" aria-label="address">752 Park Rd NW</div>
+            <div class="unit-area fade">
+              <span class="unit-metro">Columbia Heights</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
             </div>
           </section>
         </section>
       </section>
-      <section class="unit-listing owner-list list-lower named-area">
+      <section class="unit-listing new-list owner-list list-lower named-metro">
         <section class="unit-image" aria-hidden="true">
           <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-8.jpg')" title="Photo of unit at 1363 Oak St NW">
             <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
@@ -462,38 +503,15 @@
             </ul>
           </section>
           <section class="unit-location">
-            <div class="unit-address" aria-label="address">1363 Oak St NW</div>
-            <div class="unit-area">
-              <span class="unit-area">Columbia Heights</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
+            <div class="unit-address fade" aria-label="address">1363 Oak St NW</div>
+            <div class="unit-area fade">
+              <span class="unit-metro">Columbia Heights</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
             </div>
           </section>
         </section>
       </section>
-      </main>
-
-  <style>  /* Styles for the search results - footer */
-    #search-pagination {
-      background: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      padding: 25px 0;
-    }
-    #search-pagination > * {
-      margin: 5px;
-    }
-    #search-pagination a {
-      color: rgb(58,142,82);
-    }
-    #location-crumb li[role='menuitem']::after {
-      content: '\a0\a0\226b\a0\a0';
-    }
-    .page-link {
-      padding: 0 10px;
-    }
-  </style>
-    <footer id="search-pagination" role="naviagtion">
+    </main>
+    <footer id="search-pagination" class="onBright" role="naviagtion">
       <nav class="page-nav">
         <ul class="page-list" role="menubar" aria-label="Search resutls pages">
           <li class="page-link" id="first-page-link" title="First page"><a href="#" class="bold" role="menuitem" aria-label="go to first page">|&#x226a;</a></li>
@@ -506,46 +524,22 @@
         </ul>
       </nav>
       <div id="pagination-results">
-        <div class="lite"><span id="showcase-start">1</span> - <span id="showcase-end">30</span> of <span id="showcase-limit">79</span> Results</div>
+        <div class="fade"><span id="showcase-start">1</span> - <span id="showcase-end">30</span> of <span id="showcase-limit">79</span> Results</div>
       </div>
       <ul id="location-crumb" role="menubar" aria-label="Geographic area options">
-        <li id="country-crumb" role="menuitem"><a href="#" area-label="Country">United States</a></li>
-        <li id="state-crumb" role="menuitem"><a href="#" area-label="State or province">District of Columbia</a></li>
-        <li id="city-crumb" role="menuitem"><a href="#" area-label="City">Washingtion</a></li>
+        <li id="country-crumb" role="menuitem" aria-label="Country"><a href="#">United States</a></li>
+        <li id="state-crumb" role="menuitem" aria-label="State or province"><a href="#">District of Columbia</a></li>
+        <li id="city-crumb" role="menuitem" aria-label="City"><a href="#">Washingtion</a></li>
         <li id="zipcode-crumb">20010</li>
       </ul>
     </footer>
   </main>
-
-  <style>  /* Styles for the area report */
-    #area-report {
-      margin-bottom: 15px;
-      padding: 0 30px;
-      background: white;
-    }
-    #area-report-title {
-      font-size: 1.5em;
-      font-weight: bold;
-    }
-    #area-report-body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      width: 90%;
-      padding: 0 30px;
-    }
-    #area-report a, #area-report a:hover, #area-report a:active, #area-report a:visited {
-      color: rgb(58,142,82);
-      text-transform: none;
-    }
-  </style>
-  <section id="area-report" aria-labelledby="area-report-title">
+  <section id="area-report" class="onBright" aria-labelledby="area-report-title">
     <header id="area-report-header">
       <h3 id="area-report-title"><span id="insight-zipcode">20010</span> Real Estate Insights</h3>
     </header>
     <main id="area-report-body">
-      <p>
+      <p>gg
         Zipcode 20010 is located in Washington, District of Columbia.
       </p>
       <p>
@@ -556,32 +550,7 @@
       </p>
     </main>
   </section>
-
-  <style>  /* Styles for the page footer */
-    #page-footer {
-      background-color: #464e52;
-      color: #7a7f7e;
-    }
-    #footer-menu {
-      display: flex;
-      flex-wrap: wrap;
-      padding: 20px 0 0 30px;
-    }
-    .footer-link {
-      font-size: 1.071em;
-      margin: 0 10px;
-    }
-    #copyright-container {
-      display: flex;
-      flex-wrap: wrap;
-    }
-    #copyright {
-      padding-left: 30px;
-      font-size: 0.714em;
-      margin-top: 15px;
-    }
-  </style>
-  <footer id="page-footer" role="navigation">
+  <footer id="page-footer" class="pale onColorFoot" role="navigation">
     <nav id="footer-nav">
       <ul id="footer-menu" role="menubar">
         <li class="footer-link"><a href="#" role="menuitem">About Trulia</a></li>
