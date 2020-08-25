@@ -17,11 +17,12 @@
       line-height: 1.4;
       color: rgba(34,34,34,1);
       background-color: rgba(0,0,0,0);
-      font-size: 14px;
+      font-size: .875rem;
       font-family: 'Source Sans Pro', sans-serif;
     }
   /* Layout the entire page as a grid, with 1 column per row */
     body {
+      margin-bottom: 0;
       display: grid;
       grid-template-columns: 100%;
     }
@@ -38,23 +39,37 @@
     li {
       display: inline-block;
     }
+    li > a {
+      margin: 0 .75em;
+    }
     .bold {
-      font-weight: bold;
+      font-weight: 600;
     }
     .bright {
       color: rgb(255,255,255);
+      font-weight: 600;
     }
     .circled {
+      display: inline-block;
+      height: 1.571em;
+      width: 1.571em;
       border-color: rgb(255,255,255);
+      border-width: px;
+      border-style: solid;
+      border-radius: 1.571em;
+      text-align: center;
     }
     .fade {
       color: rgb(120,125,129);
     }
     .pale {
-      color: rgb(177,182,187);
+      color: rgb(230,234,238);
     }
-    .onBright {
+    .onColorMain {
       background-color: rgb(255,255,255);
+    }
+    .onColorAccent {
+      background-color: rgb(232,233,234);
     }
     .onColorFoot {
       background-color: rgb(71,78,82);
@@ -64,11 +79,11 @@
     }
     a, a:active, a:hover, a:visited {
       color: rgb(58,142,82);
+      text-decoration: none;
     }
     .menu a, .menu a:active, .menu a:hover, .menu a:visited {
       color: inherit;
       font-weight: 600;
-      text-decoration: none;
       text-transform: capitalize;
     }
     .footer-link a, .menu a:active, .menu a:hover, .menu a:visited {
@@ -77,7 +92,7 @@
       text-transform: capitalize;
     }
     .list-lower .ask-price::after {
-      color: rgba(0,100,0,1);
+      color: rgba(0,192,0,1);
     }
     .list-higher .ask-price::after {
       color: rgba(180,0,0,1);
@@ -85,12 +100,9 @@
     .unit-address::before {
       color: rgba(180,0,0,1);
     }
-    .unit-stats li::before {
-      color: rgba(0,0,192,1);
-    }
   /* Styles for the page header */
     #page-header {
-      height: 2.857em;
+      padding: 11px;
       display: flex;
       justify-content: flex-start;
       align-items: center;
@@ -98,33 +110,25 @@
     #header-menu {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: baseline;
       flex-grow: 1;
-    }
-    #header-menu li, #logo {
-      padding: 0 0.857em;
     }
     #logo {
       width: 5.571em;
       height: 1.786em;
-    }
-    .circled {
-      display: inline-block;
-      height: 1.429em;
-      width: 1.571em;
-      border-width: px;
-      border-style: solid;
-      border-radius: 1.571em;
-      text-align: center;
+      padding-right: 0.857em;
+      flex-shrink: 0;
     }
   /* Styles for the page footer */
     #footer-menu {
-      padding: 1.429em 0 0 2.143em;
-      display: flex;
-      flex-wrap: wrap;
+      padding: 25px 30px 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(10.5em, 1fr));
+      grid-gap: .33em;
+      justify-items: start;
+      justify-content: space-between;
     }
     .footer-link {
-      margin: 0 .714em;
       font-size: 1.071em;
     }
     #copyright-container {
@@ -132,36 +136,77 @@
       justify-content: space-between;
     }
     #copyright {
-      margin-top: 1.071em;
-      padding-left: 2.143em;
+      margin-top: 15px;
+      padding: 0 30px;
       font-size: 0.714em;
       flex-grow: 1;
     }
   /* Styles for the main section of the page, the search results */
   /* Styles for the search results - header */
     #report-title {
-      padding: 1.33em 0;
+      padding: 20px 0;
       font-weight: bold;
     }
     #report-tally {
-      padding-bottom: 1.071em;
+      padding-bottom: 15px;
     }
-  /* Styles for the area report */
-    #area-report {
-      margin-bottom: 1.071em;
-      padding: 0 2.143em;
+  /* Styles for the listing showcase */
+    #showcase {
+      padding: 15px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      grid-gap: 15px;
+      justify-content: center;
     }
-    #area-report-title {
-      font-size: 1.5em;
-      font-weight: bold;
+    .unit-listing {
+      min-width: 220px;
+      min-height: 260px;
+      border-radius: 5px;
     }
-    #area-report-body {
-      width: 90%;
-      padding: 0 2.143em;
+    .unit-photo {
+      width: 100%;
+      height:160px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+      align-items: flex-start;
+    }
+    .unit-new {
+      background-color: rgba(45,191,102,.70);
+    }
+    .unit-owner {
+      background-color: rgba(134,144,152,0.45);
+    }
+    .unit-new, .unit-owner {
+      padding: 0 .3em;
+      display: none;
+      border-top-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      font-size: .857em;
+      text-transform: uppercase;
+    }
+    /* Add the flag to the photo for new listings */
+    .new-list .unit-new {
+      display: inline-block;
+    }
+    /* Add the flag to the photo for listings by the owner */
+    .owner-list .unit-owner {
+      display: inline-block;
+    }
+    .unit-info {
+      padding: 0 1.07em;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
+      justify-content: space-around;
+    }
+    .ask-price {
+      font-size: 1.17em;
+    }
+    .unit-stats li {
+      padding: 0 .75em .143em 0;
     }
   /* Styles for the search results - footer */
     #search-pagination {
@@ -177,7 +222,18 @@
     .page-link {
       padding: 0 .714em;
     }
-
+  /* Styles for the area report */
+    #area-report {
+      margin-bottom: 15px;
+      padding: 0 3vw;
+    }
+    #area-report-title {
+      font-size: 1.5em;
+      margin: .83em 0;
+    }
+    #area-report-body {
+      padding: 0 3vw;
+    }
   /* Create the decorations, symbols and flags for enhancing content */
     #location-crumb li[role='menuitem']::after {
       content: '\a0\a0\226b\a0\a0';
@@ -187,24 +243,14 @@
     .unit-metro:not(:empty)::after, .unit-city::after {
       content: '\2c\a0';
     }
-    /* Add a flag to the photo for new listings */
-    .new-list .unit-new {
-      display: inline-block;
-      background-color: rgba(32,192,99,0.35);
-    }
-    /* Add a flag to the photo for listings by the owner */
-    .owner-list .unit-owner {
-      display: inline-block;
-      background-color: rgba(134,144,152,0.85);
-    }
   /* Create the symbols and labels for various unit information fields */
     /* Unless overridden in a declaration, the symbols are from the Symbola font */
     .ask-price::before, .unit-stats > li > span::before {
+      color: rgb(0,0,192);
       font-family: 'SymbolaRegular', san-serif;
-      font-weight: normal;
     }
     .unit-stats > li > span::before {
-      font-weight: bold; /* normal; */
+      font-weight: 600;
     }
     /* Currency symbols added to the left of the list price */
     .ask-price::before {
@@ -226,7 +272,7 @@
     .ask-price::after {
       font-family: 'Source Sans Pro', sans-serif;
       font-size: 1.25em;
-      font-weight: bold;
+      font-weight: 600;
     }
     .list-lower .ask-price::after {
       content: '\a0\2193';
@@ -254,10 +300,6 @@
     }
     .unit-address::before {
       content: "\1f4cd\20";
-    }
-
-    .unit-stats li {
-      padding: 0 .75em .143em 0;
     }
   </style>
 </head>
@@ -399,19 +441,19 @@
         <ul role="menubar">
           <li><a href="#" role="menuitem">Saved Homes</a></li>
           <li><a href="#" role="menuitem">Saved Searches</a></li>
-          <li><a href="#" role="menuitem" id="join-link" aria-label="Sign up or join Trulia"><span class="circled">J</span> jsir</a></li>
+          <li><a href="#" role="menuitem" id="join-link" class="circled" aria-label="Sign up or join Trulia">J</a></li>
         </ul>
       </nav>
     </div>
   </header>
   <main id="search-results">
-    <header id="search-report" class="onBright">
+    <header id="search-report" class="onColorMain">
       <div id="report-title">Homes For Sale &amp; Real Estate in <span id="search-header-zip">20010</span></div>
       <div id="report-tally"><span id="search-result-tally">79</span> homes available on Trulia</div>
     </header>
-    <main id="showcase" role="region" aria-labelledby="pagination-results">
-      <section class="unit-listing new-list owner-list list-higher">
-        <section class="unit-image" aria-hidden="true">
+    <main id="showcase" class="onColorAccent" role="region" aria-labelledby="pagination-results">
+      <section class="unit-listing onColorMain new-list owner-list list-higher">
+        <section class="unit-image bright" aria-hidden="true">
           <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-2.jpg')" title="Photo of unit at 752 Park Rd NW">
             <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
           </div>
@@ -435,9 +477,9 @@
           </section>
         </section>
       </section>
-      <section class="unit-listing owner-list list-lower">
+      <section class="unit-listing onColorMain list-lower">
         <section class="unit-image" aria-hidden="true">
-          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-5.jpg')" title="Photo of unit at 1363 Oak St NW">
+          <div class="unit-photo bright" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-5.jpg')" title="Photo of unit at 1363 Oak St NW">
             <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
           </div>
         </section>
@@ -460,9 +502,9 @@
           </section>
         </section>
       </section>
-      <section class="unit-listing new-list list-higher named-metro">
+      <section class="unit-listing onColorMain new-list list-higher named-metro">
         <section class="unit-image" aria-hidden="true">
-          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-12.jpg')" title="Photo of unit at 752 Park Rd NW">
+          <div class="unit-photo bright" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-12.jpg')" title="Photo of unit at 752 Park Rd NW">
             <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
           </div>
         </section>
@@ -485,9 +527,9 @@
           </section>
         </section>
       </section>
-      <section class="unit-listing new-list owner-list list-lower named-metro">
+      <section class="unit-listing onColorMain owner-list list-lower named-metro">
         <section class="unit-image" aria-hidden="true">
-          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-8.jpg')" title="Photo of unit at 1363 Oak St NW">
+          <div class="unit-photo bright" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-8.jpg')" title="Photo of unit at 1363 Oak St NW">
             <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
           </div>
         </section>
@@ -511,7 +553,7 @@
         </section>
       </section>
     </main>
-    <footer id="search-pagination" class="onBright" role="naviagtion">
+    <footer id="search-pagination" class="onColorMain" role="naviagtion">
       <nav class="page-nav">
         <ul class="page-list" role="menubar" aria-label="Search resutls pages">
           <li class="page-link" id="first-page-link" title="First page"><a href="#" class="bold" role="menuitem" aria-label="go to first page">|&#x226a;</a></li>
@@ -534,12 +576,12 @@
       </ul>
     </footer>
   </main>
-  <section id="area-report" class="onBright" aria-labelledby="area-report-title">
+  <section id="area-report" class="onColorMain" aria-labelledby="area-report-title">
     <header id="area-report-header">
-      <h3 id="area-report-title"><span id="insight-zipcode">20010</span> Real Estate Insights</h3>
+      <div id="area-report-title" class="bold"><span id="insight-zipcode">20010</span> Real Estate Insights</div>
     </header>
     <main id="area-report-body">
-      <p>gg
+      <p>
         Zipcode 20010 is located in Washington, District of Columbia.
       </p>
       <p>
