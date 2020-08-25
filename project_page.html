@@ -81,8 +81,11 @@
       color: rgb(58,142,82);
       text-decoration: none;
     }
-    .menu a, .menu a:active, .menu a:hover, .menu a:visited {
+    .menu a, .menu a:active, .menu a:hover, .menu a:visited,
+    .unit-listing, .unit-listing:active, .unit-listing:hover, .unit-listing:visited {
       color: inherit;
+    }
+      .menu a, .menu a:active, .menu a:hover, .menu a:visited {
       font-weight: 600;
       text-transform: capitalize;
     }
@@ -241,7 +244,7 @@
     /* Create the toggles for display of optional elements */
     /* Add a comma after the city name, and neighborhood name if present */
     .unit-metro:not(:empty)::after, .unit-city::after {
-      content: '\2c\a0';
+      content: '\2c\20';
     }
   /* Create the symbols and labels for various unit information fields */
     /* Unless overridden in a declaration, the symbols are from the Symbola font */
@@ -265,6 +268,9 @@
     }
     .gbp::before {
       content: '\00a3\a0';
+    }
+    .rub::before {
+      content: '\20bd\a0';
     }
     .yen::before {
       content: '\00a5\a0';
@@ -301,129 +307,25 @@
     .unit-address::before {
       content: "\1f4cd\20";
     }
+  /* Responsive adjustments */
+    @media only screen AND (max-width: 45rem) {
+      #header-menu {
+        padding: .27em 0;
+        flex-grow: 1;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-end;
+      }
+    }
+    @media (pointer: coarse) {
+      .footer-link, #header-menu li {
+        padding-top: .5em;
+        padding-bottom: .5em;
+      }
+    }
   </style>
 </head>
 <body>
-<!-- ## Reference content
-
-    ### Font
-    Lato 400 Regular
-    https://fonts.google.com/?category=Sans+Serif&selection.family=Lato
-
-    ### Navigation:
-    Buy Rent Mortgage Local Scoop
-    Saved Homes Saved Searches jsir
-
-    ### Houses:
-
-    $475,000
-    2bd
-    2ba
-    715 sqft
-    3205 Georgia Ave NW #403
-    Pleasant Plains, Washington, DC
-
-    $774,900
-    2bd
-    3ba
-    3615 10th St NW #8
-    Columbia Heights, Washington, DC
-
-    $600,000
-    3 bd
-    2 ba
-    3120 Park Pl NW
-    Pleasant Plains, Washington, DC
-
-    $630,000
-    2bd
-    3ba
-    1500 sq ft
-    3221 Warder St NW #1
-    Pleasant Plains, Washington, DC
-
-    $1,295,000
-    9bd
-    6ba
-    705 Kenyon St NW
-    Pleasant Plains, Washington, DC
-
-    $1,049,000
-    6bd
-    4ba
-    2688 sqft
-    1363 Oak St NW
-    Columbia Heights, Washington, DC
-
-    $720,000
-    3bd
-    3ba
-    1850 sqft
-    1307 Irving St NW #1
-    Columbia Heights, Washington, DC
-
-    $760,000
-    3bd
-    3ba
-    1920 sqft
-    752 Park Rd NW
-    Columbia Heights, Washington, DC
-
-    $760,000
-    3bd
-    3ba
-    1920 sqft
-    752 Park Rd NW
-    Columbia Heights, Washington, DC
-
-    $999,000
-    2bd
-    4ba
-    2395 sqft
-    3511 17th ST NW #7
-    Mount Pleasant, Washington, DC
-
-    $474,500
-    2bd
-    1ba
-    964 sqft
-    1356 Kenyon St NW #8
-    Columbia Heights, Washington, DC
-
-    $399,000
-    1bd
-    1ba
-    462 sqft
-    3205 Georgia Ave NW, #505
-    Pleasant Plains, Washington, DC
-
-    ### Images: 
-
-    House pics:
-    https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-1.jpg
-    https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-2.jpg
-    https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-3.jpg
-    https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-4.jpg
-    https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-5.jpg
-    https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-6.jpg
-    https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-7.jpg
-    https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-8.jpg
-    https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-09.jpg
-    https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-10.jpg
-    https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-11.jpg
-    https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-12.jpg
-
-    Icons
-    https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/bed-icon.png
-    https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/bath-icon.png
-
-    Arrows:
-    https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/down-arrow-outline.svg
-    https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/up-sign.svg
-
-
-
--->
   <header id="page-header" class="bright onColorNav" role="navigation">
     <div id="logo" aria-hidden="true">
       <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/logo.svg" alt="Trulia.com Logo">
@@ -431,17 +333,17 @@
     <div id="header-menu">
       <nav id="left-menu" class="menu">
         <ul role="menubar">
-          <li><a href="#" role="menuitem">buy</a></li>
-          <li><a href="#" role="menuitem">rent</a></li>
-          <li><a href="#" role="menuitem">mortgage</a></li>
-          <li><a href="#" role="menuitem">local scoop</a></li>
+          <li><a href="#" accesskey="b" role="menuitem">buy</a></li>
+          <li><a href="#" accesskey="r" role="menuitem">rent</a></li>
+          <li><a href="#" accesskey="m" role="menuitem">mortgage</a></li>
+          <li><a href="#" accesskey="o" role="menuitem">local scoop</a></li>
         </ul>
       </nav>
       <nav id="right-menu" class="menu">
         <ul role="menubar">
-          <li><a href="#" role="menuitem">Saved Homes</a></li>
-          <li><a href="#" role="menuitem">Saved Searches</a></li>
-          <li><a href="#" role="menuitem" id="join-link" class="circled" aria-label="Sign up or join Trulia">J</a></li>
+          <li><a href="#" accesskey="s" role="menuitem">Saved Homes</a></li>
+          <li><a href="#" accesskey="e" role="menuitem">Saved Searches</a></li>
+          <li><a href="#" accesskey="j" role="menuitem" id="join-link" class="circled" aria-label="Sign up or join Trulia">J</a></li>
         </ul>
       </nav>
     </div>
@@ -452,15 +354,190 @@
       <div id="report-tally"><span id="search-result-tally">79</span> homes available on Trulia</div>
     </header>
     <main id="showcase" class="onColorAccent" role="region" aria-labelledby="pagination-results">
-      <section class="unit-listing onColorMain new-list owner-list list-higher">
-        <section class="unit-image bright" aria-hidden="true">
-          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-2.jpg')" title="Photo of unit at 752 Park Rd NW">
+      <a href="#" class="unit-listing onColorMain list-higher">
+        <section class="unit-photo bright" aria-hidden="true">
+          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-1.jpg')" title="Photo of unit at 3205 Georgia Ave NW #403">
+            <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
+          </div>
+        </section>
+        <section class="unit-info" role="region" aria-label="information about unit at 3205 Georgia Ave NW #403">
+          <header class="unit-price bold">
+            <span class="ask-price usd" aria-label="list price">475,000</span>
+          </header>
+          <section class="unit-data">
+            <ul class="unit-stats">
+              <li class="beds" aria-label="bedrooms"><span class="unit-beds">2</span></li>
+              <li class="baths" aria-label="bathrooms"><span class="unit-baths">2</span></li>
+              <li class="footage" aria-label="square footage"><span class="unit-footage">715</span></li>
+            </ul>
+          </section>
+          <section class="unit-location">
+            <div class="unit-address fade" aria-label="address">3205 Georgia Ave NW #403</div>
+            <div class="unit-area fade">
+              <span class="unit-metro">Pleasant Plains</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
+            </div>
+          </section>
+        </section>
+      </a>
+      <a href="#" class="unit-listing onColorMain new-list">
+        <section class="unit-photo bright" aria-hidden="true">
+          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-2.jpg')" title="Photo of unit at 3615 10th St NW #8">
+            <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
+          </div>
+        </section>
+        <section class="unit-info" role="region" aria-label="information about unit at 3615 10th St NW #8">
+          <header class="unit-price bold">
+            <span class="ask-price usd" aria-label="list price">774,900</span>
+          </header>
+          <section class="unit-data">
+            <ul class="unit-stats">
+              <li class="beds" aria-label="bedrooms"><span class="unit-beds">2</span></li>
+              <li class="baths" aria-label="bathrooms"><span class="unit-baths">3</span></li>
+              <li class="footage" aria-label="square footage"><span class="unit-footage">1200</span></li>
+            </ul>
+          </section>
+          <section class="unit-location">
+            <div class="unit-address fade" aria-label="address">3615 10th St NW #8</div>
+            <div class="unit-area fade">
+              <span class="unit-metro">Columbia Heights</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
+            </div>
+          </section>
+        </section>
+      </a>
+      <a href="#" class="unit-listing onColorMain list-lower">
+        <section class="unit-photo bright" aria-hidden="true">
+          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-3.jpg')" title="Photo of unit at 3120 Park Pl NW">
+            <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
+          </div>
+        </section>
+        <section class="unit-info" role="region" aria-label="information about unit at 3120 Park Pl NW">
+          <header class="unit-price bold">
+            <span class="ask-price gbp" aria-label="list price">458,085</span>
+          </header>
+          <section class="unit-data">
+            <ul class="unit-stats">
+              <li class="beds" aria-label="bedrooms"><span class="unit-beds">3</span></li>
+              <li class="baths" aria-label="bathrooms"><span class="unit-baths">2</span></li>
+              <li class="footage" aria-label="square footage"><span class="unit-footage">1100</span></li>
+            </ul>
+          </section>
+          <section class="unit-location">
+            <div class="unit-address fade" aria-label="address">3120 Park Pl NW</div>
+            <div class="unit-area fade">
+              <span class="unit-metro">Pleasant Plains</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
+            </div>
+          </section>
+        </section>
+      </a>
+      <a href="#" class="unit-listing onColorMain">
+        <section class="unit-photo bright" aria-hidden="true">
+          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-4.jpg')" title="Photo of unit at 3221 Warder St NW #1">
+            <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
+          </div>
+        </section>
+        <section class="unit-info" role="region" aria-label="information about unit at 3221 Warder St NW #1">
+          <header class="unit-price bold">
+            <span class="ask-price usd" aria-label="list price">630,000</span>
+          </header>
+          <section class="unit-data">
+            <ul class="unit-stats">
+              <li class="beds" aria-label="bedrooms"><span class="unit-beds">2</span></li>
+              <li class="baths" aria-label="bathrooms"><span class="unit-baths">3</span></li>
+              <li class="footage" aria-label="square footage"><span class="unit-footage">1500</span></li>
+            </ul>
+          </section>
+          <section class="unit-location">
+            <div class="unit-address fade" aria-label="address">3221 Warder St NW #1</div>
+            <div class="unit-area fade">
+              <span class="unit-metro">Pleasant Plains</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
+            </div>
+          </section>
+        </section>
+      </a>
+      <a href="#" class="unit-listing onColorMain list-higher">
+        <section class="unit-photo bright" aria-hidden="true">
+          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-5.jpg')" title="Photo of unit at 705 Kenyon St NW">
+            <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
+          </div>
+        </section>
+        <section class="unit-info" role="region" aria-label="information about unit at 705 Kenyon St NW">
+          <header class="unit-price bold">
+            <span class="ask-price btc" aria-label="list price">1,113</span>
+          </header>
+          <section class="unit-data">
+            <ul class="unit-stats">
+              <li class="beds" aria-label="bedrooms"><span class="unit-beds">9</span></li>
+              <li class="baths" aria-label="bathrooms"><span class="unit-baths">6</span></li>
+              <li class="footage" aria-label="square footage"><span class="unit-footage">3100</span></li>
+            </ul>
+          </section>
+          <section class="unit-location">
+            <div class="unit-address fade" aria-label="address">705 Kenyon St NW</div>
+            <div class="unit-area fade">
+              <span class="unit-metro">Pleasant Plains</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
+            </div>
+          </section>
+        </section>
+      </a>
+      <a href="#" class="unit-listing onColorMain new-list">
+        <section class="unit-photo bright" aria-hidden="true">
+          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-6.jpg')" title="Photo of unit at 1363 Oak St NW">
+            <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
+          </div>
+        </section>
+        <section class="unit-info" role="region" aria-label="information about unit at 1363 Oak St NW">
+          <header class="unit-price bold">
+            <span class="ask-price euro" aria-label="list price">889,239</span>
+          </header>
+          <section class="unit-data">
+            <ul class="unit-stats">
+              <li class="beds" aria-label="bedrooms"><span class="unit-beds">6</span></li>
+              <li class="baths" aria-label="bathrooms"><span class="unit-baths">4</span></li>
+              <li class="footage" aria-label="square footage"><span class="unit-footage">2688</span></li>
+            </ul>
+          </section>
+          <section class="unit-location">
+            <div class="unit-address fade" aria-label="address">1363 Oak St NW</div>
+            <div class="unit-area fade">
+              <span class="unit-metro">Columbia Heights</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
+            </div>
+          </section>
+        </section>
+      </a>
+      <a href="#" class="unit-listing onColorMain">
+        <section class="unit-photo bright" aria-hidden="true">
+          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-7.jpg')" title="Photo of unit at 1307 Irving St NW #1">
+            <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
+          </div>
+        </section>
+        <section class="unit-info" role="region" aria-label="information about unit at 1307 Irving St NW #1">
+          <header class="unit-price bold">
+            <span class="ask-price usd" aria-label="list price">720,000</span>
+          </header>
+          <section class="unit-data">
+            <ul class="unit-stats">
+              <li class="beds" aria-label="bedrooms"><span class="unit-beds">3</span></li>
+              <li class="baths" aria-label="bathrooms"><span class="unit-baths">3</span></li>
+              <li class="footage" aria-label="square footage"><span class="unit-footage">1850</span></li>
+            </ul>
+          </section>
+          <section class="unit-location">
+            <div class="unit-address fade" aria-label="address">1307 Irving St NW #1</div>
+            <div class="unit-area fade">
+              <span class="unit-metro">Columbia Heights</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
+            </div>
+          </section>
+        </section>
+      </a>
+      <a href="#" class="unit-listing onColorMain owner-list list-lower">
+        <section class="unit-photo bright" aria-hidden="true">
+          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-8.jpg')" title="Photo of unit at 752 Park Rd NW">
             <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
           </div>
         </section>
         <section class="unit-info" role="region" aria-label="information about unit at 752 Park Rd NW">
           <header class="unit-price bold">
-            <span class="ask-price" aria-label="list price">760,000</span>
+            <span class="ask-price usd" aria-label="list price">760,000</span>
           </header>
           <section class="unit-data">
             <ul class="unit-stats">
@@ -476,93 +553,118 @@
             </div>
           </section>
         </section>
-      </section>
-      <section class="unit-listing onColorMain list-lower">
-        <section class="unit-image" aria-hidden="true">
-          <div class="unit-photo bright" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-5.jpg')" title="Photo of unit at 1363 Oak St NW">
+      </a>
+      <a href="#" class="unit-listing onColorMain owner-list new-list">
+        <section class="unit-photo bright" aria-hidden="true">
+          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-09.jpg')" title="Photo of unit at 2932 Vernon Pl NW #1">
             <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
           </div>
         </section>
-        <section class="unit-info" rol="region" aria-label="information about unit at 752 Park Rd NW">
+        <section class="unit-info" role="region" aria-label="information about unit at 2932 Vernon Pl NW #1">
           <header class="unit-price bold">
-            <span class="ask-price btc" aria-label="list price">1,049,000</span>
+            <span class="ask-price yen" aria-label="list price">80,563,040</span>
           </header>
           <section class="unit-data">
             <ul class="unit-stats">
-              <li class="beds" aria-label="bedrooms"><span class="unit-beds">6</span></li>
-              <li class="baths" aria-label="bathrooms"><span class="unit-baths">4</span></li>
-              <li class="footage" aria-label="square footage"><span class="unit-footage">2688</span></li>
+              <li class="beds" aria-label="bedrooms"><span class="unit-beds">3</span></li>
+              <li class="baths" aria-label="bathrooms"><span class="unit-baths">3</span></li>
+              <li class="footage" aria-label="square footage"><span class="unit-footage">1715</span></li>
             </ul>
           </section>
           <section class="unit-location">
-            <div class="unit-address fade" aria-label="address">1363 Oak St NW</div>
+            <div class="unit-address fade" aria-label="address">2932 Vernon Pl NW #1</div>
             <div class="unit-area fade">
               <span class="unit-metro"></span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
             </div>
           </section>
         </section>
-      </section>
-      <section class="unit-listing onColorMain new-list list-higher named-metro">
-        <section class="unit-image" aria-hidden="true">
-          <div class="unit-photo bright" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-12.jpg')" title="Photo of unit at 752 Park Rd NW">
+      </a>
+      <a href="#" class="unit-listing onColorMain list-higher">
+        <section class="unit-photo bright" aria-hidden="true">
+          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-10.jpg')" title="Photo of unit at 3205 Georgia Ave NW, #403">
             <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
           </div>
         </section>
-        <section class="unit-info" role="region" aria-label="information about unit at 752 Park Rd NW">
+        <section class="unit-info" role="region" aria-label="information about unit at 3205 Georgia Ave NW, #403">
           <header class="unit-price bold">
-            <span class="ask-price yen" aria-label="list price">760,000</span>
+            <span class="ask-price rub" aria-label="list price">74,390,035</span>
           </header>
           <section class="unit-data">
             <ul class="unit-stats">
-              <li class="beds" aria-label="bedrooms"><span class="unit-beds">3</span></li>
-              <li class="baths" aria-label="bathrooms"><span class="unit-baths">3</span></li>
-              <li class="footage" aria-label="square footage"><span class="unit-footage">1920</span></li>
-            </ul>
-          </section>
-          <section class="unit-location">
-            <div class="unit-address fade" aria-label="address">752 Park Rd NW</div>
-            <div class="unit-area fade">
-              <span class="unit-metro">Columbia Heights</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
-            </div>
-          </section>
-        </section>
-      </section>
-      <section class="unit-listing onColorMain owner-list list-lower named-metro">
-        <section class="unit-image" aria-hidden="true">
-          <div class="unit-photo bright" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-8.jpg')" title="Photo of unit at 1363 Oak St NW">
-            <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
-          </div>
-        </section>
-        <section class="unit-info" rol="region" aria-label="information about unit at 752 Park Rd NW">
-          <header class="unit-price bold">
-            <span class="ask-price gbp" aria-label="list price">1,049,000</span>
-          </header>
-          <section class="unit-data">
-            <ul class="unit-stats">
-              <li class="beds" aria-label="bedrooms"><span class="unit-beds">6</span></li>
+              <li class="beds" aria-label="bedrooms"><span class="unit-beds">2</span></li>
               <li class="baths" aria-label="bathrooms"><span class="unit-baths">4</span></li>
-              <li class="footage" aria-label="square footage"><span class="unit-footage">2688</span></li>
+              <li class="footage" aria-label="square footage"><span class="unit-footage">715</span></li>
             </ul>
           </section>
           <section class="unit-location">
-            <div class="unit-address fade" aria-label="address">1363 Oak St NW</div>
+            <div class="unit-address fade" aria-label="address">3205 Georgia Ave NW, #403</div>
+            <div class="unit-area fade">
+              <span class="unit-metro">Pleasant Plains</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
+            </div>
+          </section>
+        </section>
+      </a>
+      <a href="#" class="unit-listing onColorMain">
+        <section class="unit-photo bright" aria-hidden="true">
+          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-11.jpg')" title="Photo of unit at 1356 Kenyon St NW #B">
+            <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
+          </div>
+        </section>
+        <section class="unit-info" role="region" aria-label="information about unit at 1356 Kenyon St NW #B">
+          <header class="unit-price bold">
+            <span class="ask-price usd" aria-label="list price">474,500</span>
+          </header>
+          <section class="unit-data">
+            <ul class="unit-stats">
+              <li class="beds" aria-label="bedrooms"><span class="unit-beds">2</span></li>
+              <li class="baths" aria-label="bathrooms"><span class="unit-baths">1</span></li>
+              <li class="footage" aria-label="square footage"><span class="unit-footage">964</span></li>
+            </ul>
+          </section>
+          <section class="unit-location">
+            <div class="unit-address fade" aria-label="address">1356 Kenyon St NW #B</div>
             <div class="unit-area fade">
               <span class="unit-metro">Columbia Heights</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
             </div>
           </section>
         </section>
-      </section>
+      </a>
+      <a href="#" class="unit-listing onColorMain">
+        <section class="unit-photo bright" aria-hidden="true">
+          <div class="unit-photo" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/house-12.jpg')" title="Photo of unit at 3205 Georgia Ave NW, #505">
+            <span class="unit-new">New</span><span class="unit-owner">For Sale by Owner</span>
+          </div>
+        </section>
+        <section class="unit-info" role="region" aria-label="information about unit at 3205 Georgia Ave NW, #505">
+          <header class="unit-price bold">
+            <span class="ask-price usd" aria-label="list price">399,000</span>
+          </header>
+          <section class="unit-data">
+            <ul class="unit-stats">
+              <li class="beds" aria-label="bedrooms"><span class="unit-beds">1</span></li>
+              <li class="baths" aria-label="bathrooms"><span class="unit-baths">1</span></li>
+              <li class="footage" aria-label="square footage"><span class="unit-footage">462</span></li>
+            </ul>
+          </section>
+          <section class="unit-location">
+            <div class="unit-address fade" aria-label="address">3205 Georgia Ave NW, #505</div>
+            <div class="unit-area fade">
+              <span class="unit-metro">Pleasant Plains</span><span class="unit-city">Washington</span><span class="unit-state">DC</span>
+            </div>
+          </section>
+        </section>
+      </a>
     </main>
     <footer id="search-pagination" class="onColorMain" role="naviagtion">
       <nav class="page-nav">
         <ul class="page-list" role="menubar" aria-label="Search resutls pages">
-          <li class="page-link" id="first-page-link" title="First page"><a href="#" class="bold" role="menuitem" aria-label="go to first page">|&#x226a;</a></li>
-          <li class="page-link" id="prev-page-link" title="Previous page"><a href="#" class="bold" role="menuitem" aria-label="go to previous page">&#x226a;</a></li>
+          <li class="page-link" id="first-page-link" title="First page"><a href="#" accesskey="f" class="bold" role="menuitem" aria-label="go to first page">|&#x226a;</a></li>
+          <li class="page-link" id="prev-page-link" title="Previous page"><a href="#" accesskey="v" class="bold" role="menuitem" aria-label="go to previous page">&#x226a;</a></li>
           <li class="page-link"><a href="#" role="menuitem" aria-label="go to page 1">1</a></li>
           <li class="page-link"><a href="#" role="menuitem" aria-label="go to page 2">2</a></li>
           <li class="page-link"><a href="#" role="menuitem" aria-label="go to page 3">3</a></li>
-          <li class="page-link" id="next-page-link" title="Next page"><a href="#" class="bold" role="menuitem" aria-label="go to next page">&#x226b;</a></li>
-          <li class="page-link" id="last-page-link" title="Last page"><a href="#" class="bold" role="menuitem" aria-label="go to last page">&#x226b;|</a></li>
+          <li class="page-link" id="next-page-link" title="Next page"><a href="#" accesskey="n" class="bold" role="menuitem" aria-label="go to next page">&#x226b;</a></li>
+          <li class="page-link" id="last-page-link" title="Last page"><a href="#" accesskey="l" class="bold" role="menuitem" aria-label="go to last page">&#x226b;|</a></li>
         </ul>
       </nav>
       <div id="pagination-results">
@@ -595,16 +697,17 @@
   <footer id="page-footer" class="pale onColorFoot" role="navigation">
     <nav id="footer-nav">
       <ul id="footer-menu" role="menubar">
-        <li class="footer-link"><a href="#" role="menuitem">About Trulia</a></li>
-        <li class="footer-link"><a href="#" role="menuitem">About Zillow Group</a></li>
-        <li class="footer-link"><a href="#" role="menuitem">Careers</a></li>
-        <li class="footer-link"><a href="#" role="menuitem">Investor Relations</a></li>
-        <li class="footer-link"><a href="#" role="menuitem">Advertising Terms</a></li>
-        <li class="footer-link"><a href="#" role="menuitem">Privacy Terms of Use</a></li>
-        <li class="footer-link"><a href="#" role="menuitem">Listings Quality Policy</a></li>
-        <li class="footer-link"><a href="#" role="menuitem">Subscription Terms</a></li>
-        <li class="footer-link"><a href="#" role="menuitem">Ad Choices</a></li>
-        <li class="footer-link"><a href="#" role="menuitem">Help</a></li>
+        <li class="footer-link"><a href="#" accesskey="t" role="menuitem">About Trulia</a></li>
+        <li class="footer-link"><a href="#" accesskey="z" role="menuitem">About Zillow Group</a></li>
+        <li class="footer-link"><a href="#" accesskey="c" role="menuitem">Careers</a></li>
+        <li class="footer-link"><a href="#" accesskey="i" role="menuitem">Investor Relations</a></li>
+        <li class="footer-link"><a href="#" accesskey="a" role="menuitem">Advertising Terms</a></li>
+        <li class="footer-link"><a href="#" accesskey="p" role="menuitem">Privacy</a></li>
+        <li class="footer-link"><a href="#" accesskey="u" role="menuitem">Terms of Use</a></li>
+        <li class="footer-link"><a href="#" accesskey="q" role="menuitem">Listings Quality Policy</a></li>
+        <li class="footer-link"><a href="#" accesskey="w" role="menuitem">Subscription Terms</a></li>
+        <li class="footer-link"><a href="#" accesskey="d" role="menuitem">Ad Choices</a></li>
+        <li class="footer-link"><a href="#" accesskey="h" role="menuitem">Help</a></li>
       </ul>
     </nav>
     <div id="copyright-container">
