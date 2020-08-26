@@ -13,16 +13,16 @@
   <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/symbola" type="text/css"/>
   <style>
   /* The globally applied styles and overrides */
-    html {
-      line-height: 1.4;
-      color: rgba(34,34,34,1);
-      background-color: rgba(0,0,0,0);
-      font-size: .875rem;
-      font-family: 'Source Sans Pro', sans-serif;
+    html, body {
+      margin: 0;
+      padding: 0;
     }
   /* Layout the entire page as a grid, with 1 column per row */
-    body {
-      margin-bottom: 0;
+    #container {
+      padding: 8px;
+      line-height: 1.4;
+      font-size: .875rem;
+      font-family: 'Source Sans Pro', sans-serif;
       display: grid;
       grid-template-columns: 100%;
     }
@@ -46,62 +46,23 @@
       font-weight: 600;
     }
     .bright {
-      color: rgb(255,255,255);
       font-weight: 600;
     }
     .circled {
       display: inline-block;
       height: 1.571em;
       width: 1.571em;
-      border-color: rgb(255,255,255);
-      border-width: px;
+      border-width: 2px;
       border-style: solid;
       border-radius: 1.571em;
       text-align: center;
     }
-    .fade {
-      color: rgb(120,125,129);
-    }
-    .pale {
-      color: rgb(230,234,238);
-    }
-    .onColorMain {
-      background-color: rgb(255,255,255);
-    }
-    .onColorAccent {
-      background-color: rgb(232,233,234);
-    }
-    .onColorFoot {
-      background-color: rgb(71,78,82);
-    }
-    .onColorNav {
-      background-color: rgb(50,182,76);
-    }
     a, a:active, a:hover, a:visited {
-      color: rgb(58,142,82);
       text-decoration: none;
     }
-    .menu a, .menu a:active, .menu a:hover, .menu a:visited,
-    .unit-listing, .unit-listing:active, .unit-listing:hover, .unit-listing:visited {
-      color: inherit;
-    }
-      .menu a, .menu a:active, .menu a:hover, .menu a:visited {
-      font-weight: 600;
-      text-transform: capitalize;
-    }
-    .footer-link a, .menu a:active, .menu a:hover, .menu a:visited {
-      color: inherit;
+    .foot-link, .head-link {
       text-decoration: none;
       text-transform: capitalize;
-    }
-    .list-lower .ask-price::after {
-      color: rgba(0,192,0,1);
-    }
-    .list-higher .ask-price::after {
-      color: rgba(180,0,0,1);
-    }
-    .unit-address::before {
-      color: rgba(180,0,0,1);
     }
   /* Styles for the page header */
     #page-header {
@@ -131,17 +92,17 @@
       justify-items: start;
       justify-content: space-between;
     }
-    .footer-link {
+    .foot-link {
       font-size: 1.071em;
     }
     #copyright-container {
+      margin-top: 15px;
+      padding: 0 30px;
+      font-size: 0.714em;
       display: flex;
       justify-content: space-between;
     }
     #copyright {
-      margin-top: 15px;
-      padding: 0 30px;
-      font-size: 0.714em;
       flex-grow: 1;
     }
   /* Styles for the main section of the page, the search results */
@@ -176,12 +137,6 @@
       background-size: cover;
       display: flex;
       align-items: flex-start;
-    }
-    .unit-new {
-      background-color: rgba(45,191,102,.70);
-    }
-    .unit-owner {
-      background-color: rgba(134,144,152,0.45);
     }
     .unit-new, .unit-owner {
       padding: 0 .3em;
@@ -249,7 +204,6 @@
   /* Create the symbols and labels for various unit information fields */
     /* Unless overridden in a declaration, the symbols are from the Symbola font */
     .ask-price::before, .unit-stats > li > span::before {
-      color: rgb(0,0,192);
       font-family: 'SymbolaRegular', san-serif;
     }
     .unit-stats > li > span::before {
@@ -318,14 +272,143 @@
       }
     }
     @media (pointer: coarse) {
-      .footer-link, #header-menu li {
+      .foot-link, .head-link {
         padding-top: .5em;
         padding-bottom: .5em;
       }
     }
+  /* Color controls */
+    /* The main setting, modified by specific settings */
+    #container {
+      color: rgba(34,34,34,1); /* rgb(236,236,236) */
+      background-color: rgba(0,0,0,0,0); /* rgb(43,0,0) */
+    }
+    #dark-mode:checked ~ #container {
+      color: rgb(236,236,236); /* #ececec */
+      background-color: rgb(43,0,0); /* #2b0000 */
+    }
+    /* Colors applied to elements, overridden by class or id */
+    a, a:active, a:hover, a:visited {
+      color: rgb(58,142,82); /* #3a8e52 */
+    }
+    #dark-mode:checked ~ #container a,
+    #dark-mode:checked ~ #container a:active,
+    #dark-mode:checked ~ #container a:hover,
+    #dark-mode:checked ~ #container a:visited {
+      color:rgb(231,144,60); /* #e7903c */
+    }
+    /* Colors controlled by class, overridden by id */
+    .ask::before, .unit-stats > li > span::before {
+      color: rgb(0,0,192); /* #0000c0 */
+    }
+    #dark-mode:checked ~ #container .ask::before,
+    #dark-mode:checked ~ #container .unit-stats > li > span::before {
+      color: rgb(0,255,127); /* #00ff7f */
+    }
+    .bright, .bright a, .bright a:active, .bright a:hover, .bright a:visited {
+      color: rgb(255,255,255); /* #ffffff */
+    }
+    #dark-mode:checked ~ #container .bright,
+    #dark-mode:checked ~ #container .bright a,
+    #dark-mode:checked ~ #container .bright a:active,
+    #dark-mode:checked ~ #container .bright a:hover,
+    #dark-mode:checked ~ #container .bright a:visited {
+      color: rgb(5,7,9); /* #050709 */
+    }
+    .fade {
+      color: rgb(120,125,129); /* #787d81 */
+    }
+    #dark-mode:checked ~ #container .fade {
+      color: rgb(118,195,118); /* #76c376 */
+    }
+    .foot-link, .foot-link:active, .foot-link:hover, .foot-link:visited  {
+      color: inherit;
+    }
+    .list-lower .ask-price::after {
+      color: rgb(0,192,0); /* #00C000 */
+    }
+    #dark-mode:checked ~ #container .list-lower .ask-price::after {
+      color: rgb(0,212,0); /* #00d400 */
+    }
+    .list-higher .ask-price::after {
+      color: rgb(180,0,0); /* #b40000 */
+    }
+    #dark-mode:checked ~ #container .list-higher .ask-price::after {
+      color: rgb(180,0,0); /* #d90000 */
+    }
+    .pale {
+      color: rgb(230,234,238); /* #e6eaee */
+    }
+    #dark-mode:checked ~ #container .pale {
+      color: rgb(118,195,118); /* #76c376 */
+    }
+    .unit-address::before {
+      color: rgb(180,0,0); /* #b40000 */
+    }
+    #dark-mode:checked ~ #container .unit-address::before {
+      color: rgb(217,0,0); /* #d90000 */
+    }
+    /* Backgrounds controlled by class, overridden by id */
+    .onColorAccent {
+      background-color: rgb(233,233,234); /* e9e9ea */
+    }
+    #dark-mode:checked ~ #container .onColorAccent {
+      background-color: rgb(112,31,31); /* # */
+    }
+    .onColorFoot {
+      background-color: rgb(71,78,82); /* #474e52 */
+    }
+    #dark-mode:checked ~ #container .onColorFoot {
+      background-color: rgb(); /* # */
+    }
+    .onColorMain {
+      background-color: rgb(255,255,255); /* #ffffff */
+    }
+    #dark-mode:checked ~ #container .onColorMain {
+      background-color: rgb(74,10,10); /* #4a0a0a */
+    }
+    .onColorNav {
+      background-color: rgb(50,182,76); /* #32b64c */
+    }
+    #dark-mode:checked ~ #container .onColorNav {
+      background-color: rgb(50,182,76); /* # */
+    }
+    .unit-new {
+      background-color: rgba(45,191,102,0.70); /* #2dbf66 */
+    }
+    #dark-mode:checked ~ #container .unit-new {
+      background-color: rgba(45,191,102,0.70); /* #2dbf66 */
+    }
+    .unit-owner {
+      background-color: rgba(134,144,152,0.45); /* #869098 */
+    }
+    #dark-mode:checked ~ #container .unit-owner {
+      background-color: rgba(134,144,152,0.45); /* #869098 */
+    }
+    /* Border colors */
+    .circle {
+      border-color: rgb(255,255,255); /* #ffffff */
+    }
+    #dark-mode:checked ~ #container .circle {
+      border-color: rgb(255,255,255); /* # */
+    }
+  /* Dark mode controls */
+    #dark-mode {
+      display: none;
+    }
+    #dark-mode:checked ~ #container #light-switch,
+    #dark-mode:not(:checked) ~ #container #dark-switch {
+      display: inline-block;
+    }
+    #dark-mode:checked ~ #container #dark-switch,
+    #dark-mode:not(:checked) ~ #container #light-switch {
+      display: none;
+    }
   </style>
 </head>
 <body>
+<input id="dark-mode" name="dark_mode" type="checkbox" value="dark_on">
+<div id="container">
   <header id="page-header" class="bright onColorNav" role="navigation">
     <div id="logo" aria-hidden="true">
       <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2522641/logo.svg" alt="Trulia.com Logo">
@@ -333,22 +416,22 @@
     <div id="header-menu">
       <nav id="left-menu" class="menu">
         <ul role="menubar">
-          <li><a href="#" accesskey="b" role="menuitem">buy</a></li>
-          <li><a href="#" accesskey="r" role="menuitem">rent</a></li>
-          <li><a href="#" accesskey="m" role="menuitem">mortgage</a></li>
-          <li><a href="#" accesskey="o" role="menuitem">local scoop</a></li>
+          <li><a href="#" class="head-link" accesskey="b" role="menuitem">buy</a></li>
+          <li><a href="#" class="head-link" accesskey="r" role="menuitem">rent</a></li>
+          <li><a href="#" class="head-link" accesskey="m" role="menuitem">mortgage</a></li>
+          <li><a href="#" class="head-link" accesskey="o" role="menuitem">local scoop</a></li>
         </ul>
       </nav>
       <nav id="right-menu" class="menu">
         <ul role="menubar">
-          <li><a href="#" accesskey="s" role="menuitem">Saved Homes</a></li>
-          <li><a href="#" accesskey="e" role="menuitem">Saved Searches</a></li>
-          <li><a href="#" accesskey="j" role="menuitem" id="join-link" class="circled" aria-label="Sign up or join Trulia">J</a></li>
+          <li><a href="#" class="head-link" accesskey="s" role="menuitem">Saved Homes</a></li>
+          <li><a href="#" class="head-link" accesskey="e" role="menuitem">Saved Searches</a></li>
+          <li><a href="#" class="head-link circled" accesskey="j" role="menuitem" id="join-link" aria-label="Sign up or join Trulia">J</a></li>
         </ul>
       </nav>
     </div>
   </header>
-  <main id="search-results">
+  <main>
     <header id="search-report" class="onColorMain">
       <div id="report-title">Homes For Sale &amp; Real Estate in <span id="search-header-zip">20010</span></div>
       <div id="report-tally"><span id="search-result-tally">79</span> homes available on Trulia</div>
@@ -697,24 +780,24 @@
   <footer id="page-footer" class="pale onColorFoot" role="navigation">
     <nav id="footer-nav">
       <ul id="footer-menu" role="menubar">
-        <li class="footer-link"><a href="#" accesskey="t" role="menuitem">About Trulia</a></li>
-        <li class="footer-link"><a href="#" accesskey="z" role="menuitem">About Zillow Group</a></li>
-        <li class="footer-link"><a href="#" accesskey="c" role="menuitem">Careers</a></li>
-        <li class="footer-link"><a href="#" accesskey="i" role="menuitem">Investor Relations</a></li>
-        <li class="footer-link"><a href="#" accesskey="a" role="menuitem">Advertising Terms</a></li>
-        <li class="footer-link"><a href="#" accesskey="p" role="menuitem">Privacy</a></li>
-        <li class="footer-link"><a href="#" accesskey="u" role="menuitem">Terms of Use</a></li>
-        <li class="footer-link"><a href="#" accesskey="q" role="menuitem">Listings Quality Policy</a></li>
-        <li class="footer-link"><a href="#" accesskey="w" role="menuitem">Subscription Terms</a></li>
-        <li class="footer-link"><a href="#" accesskey="d" role="menuitem">Ad Choices</a></li>
-        <li class="footer-link"><a href="#" accesskey="h" role="menuitem">Help</a></li>
+        <li><a href="#" class="foot-link" accesskey="t" role="menuitem">About Trulia</a></li>
+        <li><a href="#" class="foot-link" accesskey="z" role="menuitem">About Zillow Group</a></li>
+        <li><a href="#" class="foot-link" accesskey="c" role="menuitem">Careers</a></li>
+        <li><a href="#" class="foot-link" accesskey="i" role="menuitem">Investor Relations</a></li>
+        <li><a href="#" class="foot-link" accesskey="a" role="menuitem">Advertising Terms</a></li>
+        <li><a href="#" class="foot-link" accesskey="p" role="menuitem">Privacy</a></li>
+        <li><a href="#" class="foot-link" accesskey="u" role="menuitem">Terms of Use</a></li>
+        <li><a href="#" class="foot-link" accesskey="q" role="menuitem">Listings Quality Policy</a></li>
+        <li><a href="#" class="foot-link" accesskey="w" role="menuitem">Subscription Terms</a></li>
+        <li><a href="#" class="foot-link" accesskey="d" role="menuitem">Ad Choices</a></li>
+        <li><a href="#" class="foot-link" accesskey="h" role="menuitem">Help</a></li>
       </ul>
     </nav>
     <div id="copyright-container">
-      <div id="copyright">
-        Copyright © 2018 Trulia, LLC. All rights reserved. Equal Housing Opportunity.
-      </div>
+      <div id="copyright">Copyright © 2018 Trulia, LLC. All rights reserved. Equal Housing Opportunity.</div>
+      <div id="dark-control"><label for="dark-mode">Enable <span id="light-switch">light</span><span id="dark-switch">dark</span> mode</label></div>
     </div>
   </footer>
+</div>
 </body>
 </html>
