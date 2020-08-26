@@ -102,9 +102,6 @@
       display: flex;
       justify-content: space-between;
     }
-    #copyright {
-      flex-grow: 1;
-    }
   /* Styles for the main section of the page, the search results */
   /* Styles for the search results - header */
     #report-title {
@@ -137,6 +134,13 @@
       background-size: cover;
       display: flex;
       align-items: flex-start;
+    }
+    #dark-mode:checked ~ #container .unit-photo {
+      background-color: rgba(43,0,0,0.65);
+      background-blend-mode: multiply;
+    }
+    #dark-mode:checked ~ #container .unit-listing:hover .unit-photo {
+      background-blend-mode: normal;
     }
     .unit-new, .unit-owner {
       padding: 0 .3em;
@@ -275,6 +279,15 @@
       .foot-link, .head-link {
         padding-top: .5em;
         padding-bottom: .5em;
+      }
+    }
+    @media only screen AND (max-width: 32rem) {
+      #copyright-container {
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      #dark-control {
+        align-self: flex-end;
       }
     }
   /* Color controls */
