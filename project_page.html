@@ -17,6 +17,7 @@
       margin: 0;
       padding: 0;
     }
+* { border: 1px solid toggle(green red gold brown blue purple);}
   /* Layout the entire page as a grid, with 1 column per row */
     #container {
       padding: 8px;
@@ -332,9 +333,20 @@
       color: rgb(120,125,129); /* #787d81 */
     }
     #dark-mode:checked ~ #container .fade {
-      color: rgb(118,195,118); /* #76c376 */
+      color: rgb(202,215,202); /* #76c376 */
     }
-    .foot-link, .foot-link:active, .foot-link:hover, .foot-link:visited  {
+    .foot-link, .foot-link:active, .foot-link:hover, .foot-link:visited,
+    #showcase a, #showcase a:active, #showcase a:hover, #showcase a:visited {
+      color: inherit;
+    }
+    #dark-mode:checked ~ #container .foot-link,
+    #dark-mode:checked ~ #container .foot-link:active,
+    #dark-mode:checked ~ #container .foot-link:hover,
+    #dark-mode:checked ~ #container .foot-link:visited,
+    #dark-mode:checked ~ #container #showcase a,
+    #dark-mode:checked ~ #container #showcase a:active,
+    #dark-mode:checked ~ #container #showcase a:hover,
+    #dark-mode:checked ~ #container #showcase a:visited {
       color: inherit;
     }
     .list-lower .ask-price::after {
@@ -344,7 +356,7 @@
       color: rgb(0,212,0); /* #00d400 */
     }
     .list-higher .ask-price::after {
-      color: rgb(180,0,0); /* #b40000 */
+      color: rgb(215,0,0); /* #b40000 */
     }
     #dark-mode:checked ~ #container .list-higher .ask-price::after {
       color: rgb(180,0,0); /* #d90000 */
@@ -366,7 +378,7 @@
       background-color: rgb(233,233,234); /* e9e9ea */
     }
     #dark-mode:checked ~ #container .onColorAccent {
-      background-color: rgb(112,31,31); /* # */
+      background-color: rgb(55,25,25); /* # */
     }
     .onColorFoot {
       background-color: rgb(71,78,82); /* #474e52 */
@@ -378,7 +390,7 @@
       background-color: rgb(255,255,255); /* #ffffff */
     }
     #dark-mode:checked ~ #container .onColorMain {
-      background-color: rgb(74,10,10); /* #4a0a0a */
+      background-color: rgb(36,18,18); /* #4a0a0a */
     }
     .onColorNav {
       background-color: rgb(50,182,76); /* #32b64c */
@@ -406,21 +418,25 @@
       border-color: rgb(255,255,255); /* # */
     }
   /* Dark mode controls */
-    #dark-mode {
+    #dark-mode, #light-mode {
       display: none;
     }
     #dark-mode:checked ~ #container #light-switch,
-    #dark-mode:not(:checked) ~ #container #dark-switch {
+    #light-mode:checked ~ #container #dark-switch {
       display: inline-block;
     }
     #dark-mode:checked ~ #container #dark-switch,
-    #dark-mode:not(:checked) ~ #container #light-switch {
+    #light-mode:checked ~ #container #light-switch {
       display: none;
     }
   </style>
 </head>
 <body>
-<input id="dark-mode" name="dark_mode" type="checkbox" value="dark_on">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/symbola" type="text/css"/>
+<input id="light-mode" name="mode_switch" type="radio" value="dark_off" checked="ture">
+<input id="dark-mode" name="mode_switch" type="radio" value="dark_on">
 <div id="container">
   <header id="page-header" class="bright onColorNav" role="navigation">
     <div id="logo" aria-hidden="true">
@@ -807,8 +823,9 @@
       </ul>
     </nav>
     <div id="copyright-container">
-      <div id="copyright">Copyright © 2018 Trulia, LLC. All rights reserved. Equal Housing Opportunity.</div>
-      <div id="dark-control"><label for="dark-mode">Enable <span id="light-switch">light</span><span id="dark-switch">dark</span> mode</label></div>
+      <div id="copyright">Copyright © 2018 Trulia, LLC. All rights reserved.</div>
+      <div>Equal Housing Opportunity.</div>
+      <div id="dark-control">Enable <span id="light-switch"><label for="light-mode">light</label></span><span id="dark-switch"><label for="dark-mode">dark</label></span> mode</div>
     </div>
   </footer>
 </div>
