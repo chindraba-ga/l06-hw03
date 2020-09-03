@@ -1,6 +1,6 @@
 # l06-hw03
 
--  Status: Submitted
+-  Status: Final
 -  CodePen: <https://codepen.io/chindraba-ga/pen/oNxYZgG>
 -  Live page: <https://www.chindraba.work/fewd/l06-hw03.html>
 
